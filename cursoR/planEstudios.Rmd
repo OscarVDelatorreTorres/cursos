@@ -8,15 +8,15 @@ header_includes:
 author: "Dr. Oscar V. De la Torre Torres"
 date: "Fecha de elaboración: 15 de junio del 2022"
 output: 
-  bookdown::pdf_document2:
-    toc: yes
-    number_sections: yes    
   bookdown::html_document2:
     toc: yes
     toc_depth: 5
     toc_float: yes
     number_sections: yes
     theme: cerulean    
+  bookdown::pdf_document2:
+    toc: yes
+    number_sections: yes    
   html_document:
     toc: yes
     toc_depth: 5
@@ -134,7 +134,7 @@ Para acreditar el curso deberá presentarse lista en el formato especificado den
 
 ## Para comprobación para beca al desempeño ESDEPED
 
-Adicional a la constancia proporcionada por la FCCA, la o el sustentane podrá descargar el presente programa en [formato *.pdf presionando esta liga](https://www.dropbox.com/s/vp8f6ntrxg9c5bc/Plan_de_estudios.pdf?raw=1)
+Adicional a la constancia proporcionada por la FCCA, la o el sustentane podrá descargar el presente programa en [formato *.pdf presionando esta liga](planEstudios.pdf)
 
 # Contacto
 
