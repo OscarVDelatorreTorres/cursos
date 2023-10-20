@@ -1,5 +1,5 @@
 ---
-title: "Plan de estudio del curso de análisis estadístico y de datos con R y Rstudio"
+title: "Curso de programación y desarrollo de documentos electrónicos e interactivos en Rstudio para profesores de las ciencias económico-administrativas"
 header_includes:
 - \usepackage{amsmath}
 - \usepackage{amssymb}
