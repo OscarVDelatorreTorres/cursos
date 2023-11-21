@@ -6,7 +6,6 @@ header_includes:
 - \usepackage{amsthm}
 - \usepackage{mathtools}
 author: "Dr. Oscar V. De la Torre Torres"
-date: "Fecha de elaboración: 15 de junio del 2022"
 output: 
   bookdown::html_document2:
     toc: yes
