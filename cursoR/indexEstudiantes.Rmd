@@ -47,7 +47,7 @@ knitr::include_graphics("LogoFCCA.png")
 # Fechas propuestas y duración del curso
 
 - **Fechas:** Del 4 al 15 de diciembre del 2023 de 12:00 a 14:00 (en línea vía Google classroom).
-- **Duración:** 40 horas, impartidas en 10 días de sesiones de 4 horas (2 horas teóricas y 2 horas prácticas).
+- **Duración:** 40 horas, impartidas en 10 días de sesiones de 4 horas (2 horas teóricas y 2 horas prácticas). 
 
 # Presentación
 
