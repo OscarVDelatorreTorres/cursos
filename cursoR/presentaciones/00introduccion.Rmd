@@ -78,8 +78,7 @@ tabla1
 De la tabla del temario se pueden apreciar los 5 temas que se detallan a continuación:
 
 ## Instalación e introducción a programación básica en R: archivos Rmarkdown{#tema1} 
-
-En este tema se tendrá una primera sesión informativa para poder inscribirse al [Microsoft Teams del curso](https://teams.microsoft.com/l/channel/19%3aCX1b7Fr-umdqtTIyt6NyGIXJ6ylF17ui0ta5yh8qMoQ1%40thread.tacv2/General?groupId=04e17f29-e8f1-478f-9467-8d8a45739c02&tenantId=9daedba0-bfb6-497b-b5b2-033489a731f2), así como para crear una cuenta de respaldo en [Rstudio cloud](https://login.rstudio.cloud/register?redirect=%2Foauth%2Fauthorize%3Fredirect_uri%3Dhttps%253A%252F%252Frstudio.cloud%252Flogin%26client_id%3Drstudio-cloud%26response_type%3Dcode%26show_auth%3D0%26show_login%3D0%26show_setup%3D0), así como para dar instrucciones generales para la instalación de `R` y `Rstudio` en su computadora. Esto conforme se establece en las [notas introductorias del curso](https://www.rpubs.com/odelatorre/CursoR). En esta primera sesión se aprenderá a crear objetos básicos como tipo caracter, número, tabla de datos o lista, así como la generación se archivos de `Rmarkdown` (bookdown para ser más específicos) en donde se compilarán documentos y se insertarán pedazos de código de programación en `R`.
+En esta primera sesión se aprenderá a crear objetos básicos como tipo caracter, número, tabla de datos o lista, así como la generación se archivos de `Rmarkdown` (bookdown para ser más específicos) en donde se compilarán documentos y se insertarán pedazos de código de programación en `R`.
 
 ## Extracción de datos externos y elaboración de tablas de resumen{#tema2} 
 
@@ -101,10 +100,6 @@ En este tema se revisarán dudas o planteamientos específicos de los 2 temas an
 ## Generación de apuntes en línea para cursos y materia con ejecución de códigos en tiempo real{#tema6}
 
 En este tema final se aprende cómo elaborar apuntes, notas en línea y exámenes que requieran la ejecución en tiempo real de ejemplos de código de R. Esto para impartir materias, cursos seminarios o materiales en línea que requieran de programación en R.
-
-# Material de trabajo necesario, horario y consideraciones generales
-
-El horario planeado para el curso es del lunes 11 al viernes 15 de diciembre de 2023, en horario de 8:00 a 10:00 horas. El formato de enseñanza será virtual por medio de [Microsoft Teams del curso](https://teams.microsoft.com/l/channel/19%3aCX1b7Fr-umdqtTIyt6NyGIXJ6ylF17ui0ta5yh8qMoQ1%40thread.tacv2/General?groupId=04e17f29-e8f1-478f-9467-8d8a45739c02&tenantId=9daedba0-bfb6-497b-b5b2-033489a731f2).
 
 # Para comprobación para beca al desempeño ESDEPED
 
