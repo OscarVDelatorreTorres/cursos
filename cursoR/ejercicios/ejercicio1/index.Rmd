@@ -38,7 +38,7 @@ El documento a entregar es algo muy breve con formato de ensayo (introducción, 
 
 El entregable a subir es el archivo \*.Rmd, un documento en \*.html (p´gina web) y otro en word (\*.docx).
 
-El archivo Rmarkdown con el que puede trabajar (el que se utilizó para compilar estas instrucciones) [lo puede descargar en esta liga](https://oscarvdelatorretorres.github.io/cursos/cursoR/ejercicios/ejercicio1/ejercicio1CursoR.Rmd).
+El archivo Rmarkdown con el que puede trabajar (el que se utilizó para compilar estas instrucciones) [lo puede descargar en esta liga](https://oscarvdelatorretorres.github.io/cursos/cursoR/ejercicios/ejercicio1/ejercicio1CursoR.Rmd?raw=1).
 
 # Tema 1
 ## Subtema a 1.1
