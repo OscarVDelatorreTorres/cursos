@@ -36,12 +36,13 @@ Recuerde que es un curso de programación por lo que no se calificarán sus come
 
 El documento a entregar es algo muy breve con formato de ensayo (introducción, desarrollo, conclusiones).
 
-El entregable a subir es el archivo \*.Rmd, un documento en \*.html (p´gina web) y otro en word (\*.docx).
+El entregable a subir es el archivo \*.Rmd, un documento en \*.html (página web) y otro en word (\*.docx).
 
 El archivo Rmarkdown con el que puede trabajar (el que se utilizó para compilar estas instrucciones) [lo puede descargar en esta liga](https://www.dropbox.com/scl/fi/3a2i6gyywnst7g8g4kwce/index.Rmd?rlkey=jjmiycsens15k0oqn6143o338&dl=1).
 
 # Tema 1
 ## Subtema a 1.1
+### subtema 1.1.1
 
 # Tema 2
 ## subtema 2.1
