@@ -38,6 +38,7 @@ library(siebanxicor)
 library(stargazer)
 library(flextable)
 library(officer)
+library(openxlsx)
 ```
 
 ```{r, echo=FALSE, out.width="15%", fig.align="center"}
@@ -69,7 +70,10 @@ El objetivo del presente curso tiene un énfasis en los usos 1, 2 y 3, observand
 Dado lo anterior, el temario a cubrir será el siguiente:
 
 ```{r temarioT, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE}
-temario=data.frame(Día=c("1 a 2","3 a 4","5 a 6","7 a 8","9 a 10"),
+
+temario=read.xlsx("programaEstudios.xlsx")
+  
+  data.frame(Día=c("1 a 2","3 a 4","5 a 6","7 a 8","9 a 10"),
            Tema=c("Instalación e introducción a programación básica en R: archivos Rmarkdown",
                   "Extracción de datos externos y elaboración de tablas de resumen",
                   "Extracción de datos de Banco de México y bases externas y gráficas con ggplot y plotly",
@@ -86,7 +90,7 @@ tabla1=set_header_labels(tabla1,
                          `Horas.prácticas`="Horas prácticas")
 tabla1 <- set_caption(tabla1, "Programa a cubrir", 
   autonum = run_autonum(seq_id = "temarioT"))
-tabla1=width(tabla1,width=4,unit="cm")
+tabla1=width(tabla1,width=6,unit="cm")
 tabla1
 ```
 
