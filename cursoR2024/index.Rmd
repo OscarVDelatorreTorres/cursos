@@ -1,33 +1,37 @@
 ---
-title: "Curso de diseño y publicación de documentos web, notas interactivas y resultados de investigación empleando Rstudio y GitHub (2024)"
+title: Curso de diseño y publicación de documentos web, notas interactivas y resultados
+  de investigación empleando Rstudio y GitHub (2024)
+author: "Dr. Oscar V. De la Torre Torres"
 header_includes:
 - \usepackage{amsmath}
 - \usepackage{amssymb}
 - \usepackage{amsthm}
 - \usepackage{mathtools}
-author: "Dr. Oscar V. De la Torre Torres"
-output: 
+output:
   html_document:
-    toc: yes
+    toc: true
     toc_depth: 5
-    toc_float: TRUE
+    toc_float: true
   bookdown::pdf_document2:
-    toc: yes
-    number_sections: yes    
+    toc: true
+    number_sections: true
   bookdown::html_document2:
-    toc: yes
+    toc: true
     toc_depth: 5
-    toc_float: yes
-    number_sections: yes
-    theme: cerulean    
+    toc_float: true
+    number_sections: true
+    theme: cerulean
   word_document:
-    toc: yes
+    toc: true
     toc_depth: '5'
-link-citations: yes
+  pdf_document:
+    toc: true
+    toc_depth: '5'
+link-citations: true
 citecolor: blue
 linkcolor: blue
 urlcolor: blue
-font: times new roman 
+font: times new roman
 lang: "Es-Es"
 ---
 
@@ -83,7 +87,7 @@ tabla1=set_header_labels(tabla1,
                          `Horas.prácticas`="Horas prácticas")
 tabla1 <- set_caption(tabla1, "Temario a cubrir en el curso", 
   autonum = run_autonum(seq_id = "temarioT"))
-tabla1=width(tabla1,width=7,unit="cm")
+tabla1=width(tabla1,width=4,unit="cm")
 tabla1
 ```
 
