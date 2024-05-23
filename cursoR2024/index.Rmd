@@ -1,5 +1,5 @@
 ---
-title: "Curso de programación y desarrollo de documentos electrónicos e interactivos en Rstudio para profesores de las ciencias económico-administrativas"
+title: "Curso de diseño y publicación de documentos web, notas interactivas y resultados de investigación empleando Rstudio y GitHub (2024)"
 header_includes:
 - \usepackage{amsmath}
 - \usepackage{amssymb}
@@ -46,19 +46,21 @@ knitr::include_graphics("LogoFCCA.png")
 
 # Fechas propuestas y duración del curso
 
-- **Fechas:** Del 4 al 15 de diciembre del 2023 de 10:00 a 12:00 (en línea vía Google classroom)    .
+- **Fechas:** Del 1 al 12 de julio del 2024 de 10:00 a 12:00 (en plataforma Moodle: )    .
 - **Duración:** 40 horas, impartidas en 10 días de sesiones de 4 horas (2 horas teóricas y 2 horas prácticas).
 
 # Presentación
 
-El presente curso está orientado a profesores y personal Académico que desee conocer, de manera introductoria, el lenguaje de programación `R` y su interfaz visual `Rstudio`. Hoy en día, el docente y/o investigador se enfrenta con muchos retos en su labor de generación y difusión del conocimiento. Algunos de estos pueden ser:
 
-1. Elaborar notas o documentos académicos que puedan publicarse en línea, mismos que se puedan publicar de manera rápida y puedan incluir ecuaciones, gráficas interactivas, códigos y vídeos e incluso aplicaciones interactivas en línea.
-2. Realizar documentos de ejecución de análisis y presentación de resultados que permitan realizar múltiples análisis cuantitativos y cualitativos en un solo documento o archivo. Documento que podría publicarse en formato *.pdf, página web, dashboard, libro electrónico, presentación y otros.
-3. Realizar sitios web o espacios especiales para observatorios, publicación de datos de estudios, etc.
-4. Poder tener, en un solo archivo, la capacidad de realizar todos los experimentos analizando archivos de múltiples paqueterías como son SAS, Stata, Minitab, SPSS, Eviews, entre otras. Esto para, con un solo proceso, elaborar los documentos, tablas y figuras con procesos automatizados.
-5. Poder ejecutar análisis cuantitativos y de análisis de datos, integrando información de bases de datos propias, externas e incluso extraer y procesar, con un solo click y proceso programado, datos de fuentes externas como Banxico, INEGI, Banco Mundial, sitios web, redes sociales, software económico y financiero especializado como Bloomberg o Reuters, etc.
-7. Procesar en un solo archivo múltiples metodologías de análisis que se harían en programas especializados diferentes y que requeriría de mucho tiempo correr y compilar. El programar en Rstudio permitirá una unificación del análisis en un solo archivo.
+
+El presente curso está orientado a profesores y personal Académico que desee conocer, de manera introductoria, las siguientes herramientas o habilidades:
+
+1. Publicar sitios web para notas en línea de manera rápida y sencilla. Esto con la ayua de Rstudio.
+2. Emplear GitHub como medio de publicación de sitios web.
+3. Conocer fundamentos del lenguaje de programación R para descargar información de fuentes como archivos de Excel, INEGI, Banco de México o el observatorio de inteligencia de mercado que está desarrollando la FCCA de la UMSNH.
+4. Elaborar documentos técnicos o publicación de avances y resultados de investigación en GitHub como material suplementario en línea para resultados de investigación.
+5. Conocer los avances del observatorio en materia de precios y algunas bases de datos agrícolas.
+6. Elaborar aplicaciones interactivas con Shiny apps y publicarlas en el servidor de posit.
 
 El objetivo del presente curso tiene un énfasis en los usos 1, 2 y 3, observando que los objetivos 4 y 5 van implícitos en la revisión del curso. Dada la temporalidad y naturaleza introductoria del mismo, la programación y tipos de documentos serán *"básicos"* pero suficientes para que la o el sustentante puedan desarrollar notas en línea, asi como archivos de análisis personal.
 
@@ -121,15 +123,16 @@ En este tema final se aprende cómo elaborar apuntes, notas en línea y exámene
 
 # Material de trabajo necesario, horario y consideraciones generales
 
-El horario planeado para el curso es del lunes 4 al viernes 15 de diciembre de 2023, en horario de 8:00 a 10:00 horas. El formato de enseñanza será virtual por medio de [Microsoft Teams del curso](https://teams.microsoft.com/l/channel/19%3aCX1b7Fr-umdqtTIyt6NyGIXJ6ylF17ui0ta5yh8qMoQ1%40thread.tacv2/General?groupId=04e17f29-e8f1-478f-9467-8d8a45739c02&tenantId=9daedba0-bfb6-497b-b5b2-033489a731f2).
+El horario planeado para el curso es del lunes 4 al viernes 15 de diciembre de 2023, en horario de 8:00 a 10:00 horas. El formato de enseñanza será virtual por medio de la [plataforma Moodle del Dr. Oscar De la Torre Torres](https://137.184.4.236/): [Liga de la plataforma](https://137.184.4.236/)
 
 Las herramientas necesarias para cursar y acreditar el curso son:
 
-- Computadora (PC o mac).
-- Cuenta de Rstudio cloud abierta en [Rstudio cloud](https://login.rstudio.cloud/register?redirect=%2Foauth%2Fauthorize%3Fredirect_uri%3Dhttps%253A%252F%252Frstudio.cloud%252Flogin%26client_id%3Drstudio-cloud%26response_type%3Dcode%26show_auth%3D0%26show_login%3D0%26show_setup%3D0). Esta última será para fines de respaldo operativo si la o el sustentante tiene problemas técnicos, durante el curso, para ejecutar los ejercicios a realizar.
-- O Tener instalado en su computadora personal `R` y `Rstudio` siguiendo las consideraciones y guías de las notas del primer día ([notas introductorias del curso](https://www.rpubs.com/odelatorre/CursoR) ).
+- Computadora (PC o mac) con conexión a internet estable.
+- Cuenta de posit cloud abierta en [posit cloud](https://login.rstudio.cloud/register?redirect=%2Foauth%2Fauthorize%3Fredirect_uri%3Dhttps%253A%252F%252Frstudio.cloud%252Flogin%26client_id%3Drstudio-cloud%26response_type%3Dcode%26show_auth%3D0%26show_login%3D0%26show_setup%3D0). Esta última será para fines de respaldo operativo si la o el sustentante tiene problemas técnicos, durante el curso, para ejecutar los ejercicios a realizar.
+- Cuenta de GitHub habilitada (se revisará en curso su creación).
+- Cuenta de Shiny apps (se abrirá durante el curso)
 
-Para acreditar el curso deberá presentarse lista en el formato especificado dentro de Microsoft Teams y cubrirse el número de horas teóricas y prácticas, junto con las tareas y cuestionarios aplicables.
+Para acreditar el curso deberá presentarse lista en la plataforma Moodle y cubrirse el número de horas teóricas y prácticas, junto con las tareas y cuestionarios aplicables.
 
 
 ## Para comprobación para beca al desempeño ESDEPED
@@ -138,7 +141,7 @@ Adicional a la constancia proporcionada por la FCCA, la o el sustentane podrá d
 
 ## Forma de inscribirse:
 
-Favor de registrarse en la siguiente [liga de Classroom (solo habilitado para profesores de la UMSNH)](https://classroom.google.com/c/NjMzODY1ODg0NDA2?cjc=lvhuux2)
+[plataforma Moodle del Dr. Oscar De la Torre Torres](https://137.184.4.236/)
 
 # Contacto
 
