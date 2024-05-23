@@ -7,6 +7,10 @@ header_includes:
 - \usepackage{mathtools}
 author: "Dr. Oscar V. De la Torre Torres"
 output: 
+  html_document:
+    toc: yes
+    toc_depth: 5
+    toc_float: TRUE
   bookdown::pdf_document2:
     toc: yes
     number_sections: yes    
@@ -16,9 +20,6 @@ output:
     toc_float: yes
     number_sections: yes
     theme: cerulean    
-  html_document:
-    toc: yes
-    toc_depth: 5
   word_document:
     toc: yes
     toc_depth: '5'
@@ -56,14 +57,14 @@ knitr::include_graphics("LogoFCCA.png")
 
 El presente curso está orientado a profesores y personal Académico que desee conocer, de manera introductoria, las siguientes herramientas o habilidades:
 
-1. Publicar sitios web para notas en línea de manera rápida y sencilla. Esto con la ayua de Rstudio.
+1. Publicar sitios web para notas en línea de manera rápida y sencilla. Esto con la ayuda de Rstudio.
 2. Emplear GitHub como medio de publicación de sitios web.
 3. Conocer fundamentos del lenguaje de programación R para descargar información de fuentes como archivos de Excel, INEGI, Banco de México o el observatorio de inteligencia de mercado que está desarrollando la FCCA de la UMSNH.
 4. Elaborar documentos técnicos o publicación de avances y resultados de investigación en GitHub como material suplementario en línea para resultados de investigación.
 5. Conocer los avances del observatorio en materia de precios y algunas bases de datos agrícolas.
 6. Elaborar aplicaciones interactivas con Shiny apps y publicarlas en el servidor de posit.
 
-El objetivo del presente curso tiene un énfasis en los usos 1, 2 y 3, observando que los objetivos 4 y 5 van implícitos en la revisión del curso. Dada la temporalidad y naturaleza introductoria del mismo, la programación y tipos de documentos serán *"básicos"* pero suficientes para que la o el sustentante puedan desarrollar notas en línea, asi como archivos de análisis personal.
+El objetivo del presente curso tiene un énfasis en los usos 1 a 4, observando que los objetivos 5 y 6 van implícitos en la revisión del curso. Dada la temporalidad y naturaleza introductoria del mismo, la programación y tipos de documentos serán *"básicos"* pero suficientes para que la o el sustentante puedan desarrollar notas en línea, asi como archivos de análisis personal.
 
 # Temario
 
@@ -73,14 +74,6 @@ Dado lo anterior, el temario a cubrir será el siguiente:
 
 temario=read.xlsx("programaEstudios.xlsx")
   
-  data.frame(Día=c("1 a 2","3 a 4","5 a 6","7 a 8","9 a 10"),
-           Tema=c("Instalación e introducción a programación básica en R: archivos Rmarkdown",
-                  "Extracción de datos externos y elaboración de tablas de resumen",
-                  "Extracción de datos de Banco de México y bases externas y gráficas con ggplot y plotly",
-                  "Compilación de presentaciones, sitios, páginas web y dashboards",
-                  "Publicación de páginas y sitios web en Rpubs y netlify, así como generación básica de sitios interactivos con shinyapps"),
-           Horas.clase=c(2,2,2,2,2),
-           Horas.prácticas=c(2,2,2,2,2))
 tabla1=flextable(temario)
 
 tabla1=set_header_labels(tabla1,
@@ -88,9 +81,9 @@ tabla1=set_header_labels(tabla1,
                          Tema="Tema a revisar",
                          `Horas.clase`="Horas de clase por sesión",
                          `Horas.prácticas`="Horas prácticas")
-tabla1 <- set_caption(tabla1, "Programa a cubrir", 
+tabla1 <- set_caption(tabla1, "Temario a cubrir en el curso", 
   autonum = run_autonum(seq_id = "temarioT"))
-tabla1=width(tabla1,width=6,unit="cm")
+tabla1=width(tabla1,width=7,unit="cm")
 tabla1
 ```
 
@@ -102,28 +95,24 @@ De la tabla del temario se pueden apreciar los 5 temas que se detallan a continu
 
 ## Instalación e introducción a programación básica en R: archivos Rmarkdown{#tema1} 
 
-En este tema se tendrá una primera sesión informativa para poder inscribirse al [Microsoft Teams del curso](https://teams.microsoft.com/l/channel/19%3aCX1b7Fr-umdqtTIyt6NyGIXJ6ylF17ui0ta5yh8qMoQ1%40thread.tacv2/General?groupId=04e17f29-e8f1-478f-9467-8d8a45739c02&tenantId=9daedba0-bfb6-497b-b5b2-033489a731f2), así como para crear una cuenta de respaldo en [Rstudio cloud](https://login.rstudio.cloud/register?redirect=%2Foauth%2Fauthorize%3Fredirect_uri%3Dhttps%253A%252F%252Frstudio.cloud%252Flogin%26client_id%3Drstudio-cloud%26response_type%3Dcode%26show_auth%3D0%26show_login%3D0%26show_setup%3D0), así como para dar instrucciones generales para la instalación de `R` y `Rstudio` en su computadora. Esto conforme se establece en las [notas introductorias del curso](https://www.rpubs.com/odelatorre/CursoR). En esta primera sesión se aprenderá a crear objetos básicos como tipo caracter, número, tabla de datos o lista, así como la generación se archivos de `Rmarkdown` (bookdown para ser más específicos) en donde se compilarán documentos y se insertarán pedazos de código de programación en `R`.
+En este tema se tendrá una primera sesión informativa para crear una cuenta de Rstudio en [Posit cloud](https://login.posit.cloud/register?redirect=%2Foauth%2Fauthorize%3Fredirect_uri%3Dhttps%253A%252F%252Frstudio.cloud%252Flogin%26client_id%3Drstudio-cloud%26response_type%3Dcode%26show_auth%3D0%26show_login%3D0%26show_setup%3D0), así como para dar instrucciones generales para la instalación de `R` y `Rstudio` en su computadora (lo ideal para trabajar de manera personal). Esto conforme se establece en las [notas introductorias del curso](https://www.rpubs.com/odelatorre/CursoR). En esta primera sesión se aprenderá a crear objetos básicos como tipo caracter, número, tabla de datos o lista, así como la generación se archivos de `Rmarkdown` (bookdown para ser más específicos) en donde se compilarán documentos y se insertarán pedazos de código de programación en `R`.
 
-## Extracción de datos externos y elaboración de tablas de resumen{#tema2} 
+## Publicación de páginas web y publicación en GitHub{#tema2} 
 
-En este tema se aprenderá a importar datos externos de archivos de Excel y se generarán tablas de resumen o eprsonalizadas como son las elaboradas con las librería `DT`, `Kable` o `stargazer`. De manera complementaria, se aprenderá a exportar las tablas generadas a archivos de Excel, Word, pdf o Latex con la ayuda de la librería stargazer.
+En este tema se aprenderá a compilar páginas web y dashboards que serán publicados en un repositorio de [GitHub](https://github.com) y publicados como páginas web estáticas. Para esto, se explicará brevemente en qué consiste GitHub, así como su uso para publicar sitios web estáticos de manera rápida. Se explicará cómo trabajar con GitHub desktop y publicar rápidamente una página que se puede actualizar de manera periódica y simple.
 
-## Extracción de datos de Banco de México y bases externas y gráficas con ggplot y plotly{#tema3}
+## Extracción de datos de fuentes externas: INEGI, Banxico, Archivos de excel, observatorio de inteligencia de mercado FCCA{#tema3}
 
-En este tema se aprenderá a conectarse a las multiples bases de datos externas que ofrecen acceso a `R` como son el Banco de México o las bases del repositorio `Quandl`. Se aprenderá cómo generar el token de las apis de estos 2 ejemplos, así como un ejemplo de extracción de código de datos de INEGI.
-Con los datos procesados, se aprenderá a graficar con la librería `ggplot2`y a hacer gráficas interactivas con `plotly`. Se cerrará el tema viendo cómo exportar estas gráficas a archivos \*.jpeg.
+En este tema se aprenderá a conectarse a las multiples bases de datos externas que ofrecen acceso a `R` como son el Banco de México, INEGI o Yahoo Finance con las funciones desarrolladas por el Dr. De la Torre, así como el repositorio de precios que se está desarrollando para el futuro observatorio de inteligencia de mercado. Se aprenderá cómo generar el token de las apis de estos 2 ejemplos, así como un ejemplo de extracción de código de datos de INEGI.
+Con los datos procesados, se aprenderá a graficar con la librería `plotly`. Se cerrará el tema viendo cómo exportar estas gráficas a archivos \*.jpeg.
 
-## Compilación de presentaciones, sitios, páginas web y dashboards{#tema4}
+## Tablas de resumen, tablas de análisis y gráficas interactivas{#tema4}
 
-Se aprenderá en este tema a compilar otro tipo de documentos como son presentaciones con fragmentos de código o fórmulas, así como hacer tableros interactivos o sitios web pequeños con la ayuda de los `flexdashboards` propios de `Rmarkdown`.
+En este tema se utilizarán librerías como plotly, flexdashboard, openxlsx o stargazer para hacer resúmenes de datos (estadísticos) y se verán varias opciones de graficar datos interactivos de línea, pie, diagramas de caja, área y otros que poueden utilizarse.
 
-## Publicación de páginas y sitios web en Rpubs y netlify, así como generación básica de sitios interactivos con shinyapps{#tema5}
+## Elaboración de sitios web interactivos y dashboards{#tema5}
 
-En este tema se revisarán dudas o planteamientos específicos de los 2 temas anteriores y se aprenderá cómo publicar los sitios, páginas y presentaciones en servidores como son Rpubs o Netlify. De manera complementaria, se mostrará cómo compilar y publicar sitios web o aplicaciones interactivas (por ejemplo para observatorios o aplicaciones en línea) en shinny apps, por medio de una cuenta gratuita. Se cerrará el curso con dudas y respuesta específicas de todo el curso.
-
-## Generación de apuntes en línea para cursos y materia con ejecución de códigos en tiempo real{#tema6}
-
-En este tema final se aprende cómo elaborar apuntes, notas en línea y exámenes que requieran la ejecución en tiempo real de ejemplos de código de R. Esto para impartir materias, cursos seminarios o materiales en línea que requieran de programación en R.
+Se hará una breve revisión de cómo generar aplicaciones, páginas web o dashboards con interactivos para, posteriormente, ser publicados en linea en los servidores de Shiny apps. Para esto, se abrirá una cuenta de uso gratuiso en los [servidores de Shiny](https://www.shinyapps.io/)
 
 # Material de trabajo necesario, horario y consideraciones generales
 
