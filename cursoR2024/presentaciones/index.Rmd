@@ -1,0 +1,42 @@
+---
+title: Curso de diseño y publicación de documentos web, notas interactivas y resultados
+  de investigación empleando Rstudio y GitHub (2024)
+author: "Dr. Oscar V. De la Torre Torres"
+date: "2023-12-04"
+output:
+  html_document:
+    toc: true
+    toc_depth: 5
+    toc_float: true
+  bookdown::pdf_document2:
+    toc: true
+    number_sections: true
+  bookdown::html_document2:
+    toc: true
+    toc_depth: 5
+    toc_float: true
+    number_sections: true
+    theme: cerulean
+  word_document:
+    toc: true
+    toc_depth: '5'
+  pdf_document:
+    toc: true
+    toc_depth: '5'
+link-citations: true
+citecolor: blue
+linkcolor: blue
+urlcolor: blue
+font: times new roman
+lang: "Es-Es"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Relación de archivos de presentaciones del curso
+
+# Sesión 1 a 2
+
+- [Introducción](https://oscarvdelatorretorres.github.io/cursos/cursoR2024/presentaciones/00introduccion/#(1))

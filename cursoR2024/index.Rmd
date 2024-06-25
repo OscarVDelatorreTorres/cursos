@@ -143,3 +143,7 @@ Adicional a la constancia proporcionada por la FCCA, la o el sustentane podrá d
 # Contacto
 
 Cualquier necesidad o problema técnico, favor de comunicarse en la página de contacto de mi sitio web: [https://www.oscardelatorretorres.com/contacto](https://www.oscardelatorretorres.com/contacto)
+
+# Material adicional:
+
+- [Presentaciones de las sesiones de clase](https://oscarvdelatorretorres.github.io/cursos/cursoR2024/presentaciones/)
