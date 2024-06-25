@@ -67,6 +67,10 @@ knitr::include_graphics("LogoFCCA.png")
 Si tiene problemas técnicos puede conectarse, el primer día del curso en esta liga permanente de Google meet en la que se llevarán todas las sesiones de clase:
 [https://meet.google.com/sei-azay-rho](https://meet.google.com/sei-azay-rho)
 
+Si desea una explicación más detallada de cómo registrarse en la plataforma Moodle, favor de ver el siguiente video:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/6uaow6eXjVA?si=WxUoX57VZNbU0uFB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 Le espero gustosamente en clase...
 
 Dr. Oscar V. De la Torre Torres
