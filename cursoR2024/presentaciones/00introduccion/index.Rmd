@@ -46,7 +46,9 @@ En Rstudio pueden correrse incluso otros lenguajes como Python, octave, MATLAB, 
 
 [Rstudio cloud](https://posit.cloud) es un servicio en donde se puede instalar y utilizar Rstudio y R (así como python y Jupyter notebooks) de manera rápida y accesible desde cualquier navegador de internet.
 
-Python es un lenguaje de programación muy popular que podemos instalar fácilmente con el compilador [anaconda Python](https://www.anaconda.com/products/distribution) o instalarlo fácilmente (como Rstudio o Posit cloud) en la nube por medio de [Anaconda cloud](https://anaconda.cloud/)
+Python es un lenguaje de programación muy popular que podemos instalar fácilmente con el compilador [anaconda Python](https://www.anaconda.com/products/distribution) o instalarlo fácilmente (como Rstudio o Posit cloud) en la nube por medio de [Anaconda cloud](https://anaconda.cloud/).
+
+Una de las ventajas de utilizar Rstudio es que también puede instalarse Python y programar en dicho lenguaje con la librería *reticulate*. Esto nos permitirá correr fragmentos de código de R o Python en la misma página web o presentación que hagamos.
 
 # GitHub ¿qué es?
 
