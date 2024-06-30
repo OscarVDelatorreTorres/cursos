@@ -52,11 +52,11 @@ knitr::include_graphics("LogoFCCA.png")
 
 # Fechas del curso
 
- Del 1 al 12 de julio del 2024 de 10:00 a 12:00 (en plataforma Moodle: [https://137.184.4.236/](https://137.184.4.236/))    .
+ Del 1 al 12 de julio del 2024 de 10:00 a 12:00 (en plataforma Moodle: [https://moodle1.cursosdelatorreybollain.com/](https://moodle1.cursosdelatorreybollain.com/))    .
 
 # Instrucciones para el registro
 
-1. Favor de inscribirse en la [plataforma Moodle del Dr. Oscar De la Torre Torres](https://137.184.4.236/) en la materia **Curso de diseño y publicación de documentos web, notas interactivas y resultados de investigación empleando Rstudio y GitHub (2024)**:   [https://137.184.4.236/](https://137.184.4.236/)
+1. Favor de inscribirse en la [plataforma Moodle del Dr. Oscar De la Torre Torres](https://137.184.4.236/) en la materia **Curso de diseño y publicación de documentos web, notas interactivas y resultados de investigación empleando Rstudio y GitHub (2024)**:   [https://moodle1.cursosdelatorreybollain.com/](https://moodle1.cursosdelatorreybollain.com/)
 2. Cree un usuario y password nuevo en la sección **Registrarse como usuario**.
 3. Espere el correo de confirmación de creación de cuenta (puede revisar en el *spam* o correo no deseado).
 4. En el correo de confirmación de creación de cuenta, haga clic en el enlace de confirmación.

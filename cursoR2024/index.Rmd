@@ -120,7 +120,7 @@ Se hará una breve revisión de cómo generar aplicaciones, páginas web o dashb
 
 # Material de trabajo necesario, horario y consideraciones generales
 
-El horario planeado para el curso es del lunes 4 al viernes 15 de diciembre de 2023, en horario de 8:00 a 10:00 horas. El formato de enseñanza será virtual por medio de la [plataforma Moodle del Dr. Oscar De la Torre Torres](https://137.184.4.236/): [Liga de la plataforma](https://137.184.4.236/)
+El horario planeado para el curso es del lunes 4 al viernes 15 de diciembre de 2023, en horario de 8:00 a 10:00 horas. El formato de enseñanza será virtual por medio de la [plataforma Moodle del Dr. Oscar De la Torre Torres](https://moodle1.cursosdelatorreybollain.com/: [Liga de la plataforma](https://moodle1.cursosdelatorreybollain.com/)
 
 Las herramientas necesarias para cursar y acreditar el curso son:
 
@@ -138,7 +138,7 @@ Adicional a la constancia proporcionada por la FCCA, la o el sustentane podrá d
 
 ## Forma de inscribirse:
 
-[plataforma Moodle del Dr. Oscar De la Torre Torres](https://137.184.4.236/)
+[plataforma Moodle del Dr. Oscar De la Torre Torres](https://moodle1.cursosdelatorreybollain.com/)
 
 # Contacto
 
