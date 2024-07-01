@@ -39,4 +39,5 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Sesión 1 a 2
 
-- [Introducción](https://oscarvdelatorretorres.github.io/cursos/cursoR2024/presentaciones/00introduccion/#(1))
+- [Introducción](https://oscarvdelatorretorres.github.io/cursos/cursoR2024/presentaciones/00introduccion/)
+- [Introducción a los archivos Rmarkdow, publicación de páginas web y a la programación en R y python](https://oscarvdelatorretorres.github.io/cursos/cursoR2024/presentaciones/01intro/)
