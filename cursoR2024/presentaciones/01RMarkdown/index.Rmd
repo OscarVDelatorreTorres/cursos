@@ -79,7 +79,7 @@ Los tipos de objeto más comunies con los que nos toparemos son:
 
 ## Ejemplo de un objeto tipo double
 
-```{r}
+```{r include=TRUE}
 # Generamos un objeto llamado a que contiene el número 5
 a=5
 # imprime el objeto a
@@ -154,4 +154,4 @@ Será necesario instalar GitHub Desktop para poder subir nuestros archivos Rmark
 
 # Programación en Python
 
-En desarollo...
+En desarrollo...
