@@ -148,9 +148,57 @@ Ligas de interés
 - [posit cloud](https://posit.cloud)
 - [GitHub](https://github.com)
 
+# Conversión de objetos en R
+
+Se pueden convertir algunos objetos de un tipo a otro.
+
+## Conversión de numérico a character:
+
+`as.character(5)`
+
+```{r}
+as.character(5)
+```
+
+## Conversión de character a numérico:
+
+`as.numeric("5")`
+
+```{r}
+as.numeric("5")
+
+```
+
+## Verificando el tipo de objeto
+
+`class(5)`
+
+```{r}
+class(5)
+```
+
+`class("5")`
+
+```{r}
+class("5")
+```
+
+# Visualización de objetcos en el workspace
+
+`tabla=data.frame(a=(1,2),b=c("A","B"))`
+`View(a)`
+
+```{r, eval=FALSE}
+tabla=data.frame(a=c(1,2),b=c("A","B"))
+View(tabla)
+
+```
+
 # Sesión de instalación de GitHub Desktop
 
-Será necesario instalar GitHub Desktop para poder subir nuestros archivos Rmarkdown a GitHub. Esto en la URL [GitHub Desktop](https://desktop.github.com/).
+- Será necesario crear una cuenta en GitHub [GitHub](https://github.com).
+- Será necesario instalar GitHub Desktop para poder subir nuestros archivos Rmarkdown a GitHub. Esto en la URL [GitHub Desktop](https://desktop.github.com/).
+- Se utilizará el "clonado" de de repositorios en Rstudio cloud, una vez que se haya creado una cuenta y un respositorio en GitHub y se haya instalado GitHub Desktop. 
 
 # Programación en Python
 
