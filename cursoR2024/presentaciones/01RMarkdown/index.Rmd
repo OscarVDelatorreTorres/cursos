@@ -191,7 +191,6 @@ class("5")
 ```{r, eval=FALSE}
 tabla=data.frame(a=c(1,2),b=c("A","B"))
 View(tabla)
-
 ```
 
 # Sesión de instalación de GitHub Desktop
