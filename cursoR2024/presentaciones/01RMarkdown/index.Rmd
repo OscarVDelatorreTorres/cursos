@@ -183,7 +183,7 @@ class(5)
 class("5")
 ```
 
-# Visualización de objetcos en el workspace
+# Visualización de objetos en el workspace
 
 `tabla=data.frame(a=(1,2),b=c("A","B"))`
 `View(a)`
