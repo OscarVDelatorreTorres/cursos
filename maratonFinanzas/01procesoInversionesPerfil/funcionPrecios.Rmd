@@ -1,0 +1,84 @@
+---
+title: "funcionPrecios"
+author: "Dr. Oscar V. De la Torre Torres"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(tidyverse)
+library(plotly)
+library(openxlsx)
+library(MSGARCH)
+library(DT)
+library(stargazer)
+library(reticulate)
+library(DescTools)
+library(MASS)
+library(data.table)
+library(reticulate)
+library(tidyquant)
+
+# Librerías yahooFinance GitHub:
+source("https://raw.githubusercontent.com/OscarVDelatorreTorres/yahooFinance/main/datosMultiplesYahooFinance.R")
+
+# Acomoda la tabla rendimientos en columna Fecha, rendimiento y tipo de activo, utilizando como tipo los nombres de las columnas de la tabla que no son Fecha (columna 14):
+
+# Extrae datos de los benchmarks VALMER (archivo*.csv) desde su sitio web:
+valmer=read.xlsx("valmer.xlsx")
+
+yearString=round(valmer$FECHA/10000,0)
+monthString=round((valmer$FECHA-(round(valmer$FECHA/10000,0)*10000))/100,0)
+dayString=valmer$FECHA-(yearString*10000)-(monthString*100)
+
+valmer$FECHA=as.Date(paste0(yearString,"-",monthString,"-",dayString))
+colnames(valmer)=c("Date",colnames(valmer[,2:ncol(valmer)]))
+# Extrae ddatos del IPC y el Dow Jones en pesos:
+
+# Ejemplo para descargar los históricos diarios de grupo Alfa (en moneda local), Microsoft en EEUU (convertido a MXN), Mercado Libre en EEUU (convertido a MXN) y el índice S&P/BMV IPC (en moneda local), desde el 1 de enero de 2023 a la fecha actual:
+tickerV=c("^MXX","^DJI")
+deD="2001-01-04"
+hastaD="2024-09-30"
+per="D"
+paridadFX="USDMXN=X"
+convertirFX=c(FALSE,TRUE)
+
+bolsas=historico_multiples_precios(tickers=tickerV,de=deD,hasta=hastaD,periodicidad=per,fxRate=paridadFX,whichToFX=convertirFX)
+precios=bolsas$tablaPrecios
+
+precios=merge(valmer,precios,by="Date",all=F)
+
+# hace tablas de resultados de precios:
+precios=data.frame(Fecha=precios$Date,
+                  CETES28D=precios$S.P.BMV.Sovereign.CETES.28.Day.Bond.Index,
+                  bonosM=precios$S.P.BMV.Sovereign.MBONOS.Bond.Index,
+                  bonosCorporativos=precios$S.P.BMV.Corporate.Bond.Index,
+                  IPC=precios$MXX,
+                  DowJones=precios$DJI)
+rendimientos=precios[,2:ncol(precios)] %>% mutate_all(~(./lag(.)-1)*100)
+rendimientos$Fecha=precios$Fecha
+rendimientos=rendimientos[-1,]
+
+preciosb100=precios
+for (a in 2:ncol(preciosb100)) {
+  preciosb100[,a]=(preciosb100[,a]/preciosb100[1,a])*100
+
+}
+
+
+preciosFigura=precios %>% pivot_longer(cols=-Fecha, names_to="Mercado", values_to="Nivel")
+
+rendimientosFigura=rendimientos %>% pivot_longer(cols=-Fecha, names_to="Mercado", values_to="Rendimiento")
+
+preciosB100Figura=preciosb100 %>% pivot_longer(cols=-Fecha, names_to="Mercado", values_to="Nivel")
+
+write.xlsx(precios, "precios.xlsx")
+write.xlsx(rendimientos, "rendimientos.xlsx")
+write.xlsx(preciosb100, "preciosb100.xlsx")
+
+write.xlsx(preciosFigura, "preciosFigura.xlsx")
+write.xlsx(rendimientosFigura, "rendimientosFigura.xlsx")
+write.xlsx(preciosB100Figura, "preciosB100Figura.xlsx")
+```

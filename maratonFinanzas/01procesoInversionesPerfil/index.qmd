@@ -1,0 +1,226 @@
+---
+title: "Proceso de inversión y perfiles de inversión"
+author: "Dr. Oscar V. De la Torre Torres"
+title-slide-attributes:
+  data-background-size: contain
+  data-background-opacity: "0.5"
+format: 
+  revealjs:
+    controls-tutorial: true
+    transition: fade
+    scrollable: true  
+    footer: "Proceso de inversión y perfiles de inversión"
+    slide-number: true
+    preview-links: true
+    progress: true
+    history: true   
+    chalkboard: true
+    smaller: true
+    logo: umsnh.png
+bibliography: biblio.bib
+bibliographystyle: cyaunames.csl
+---
+
+```{r setup, include=FALSE}
+library(dplyr)
+library(tidyverse)
+library(plotly)
+library(openxlsx)
+library(MSGARCH)
+library(DT)
+library(stargazer)
+library(reticulate)
+library(DescTools)
+library(MASS)
+library(data.table)
+library(reticulate)
+library(tidyquant)
+
+# Tablas de datos de entrada:
+
+precios=read.xlsx("precios.xlsx")
+rendimientos=read.xlsx("rendimientos.xlsx")
+preciosb100=read.xlsx("preciosb100.xlsx")
+
+preciosFigura=read.xlsx("preciosFigura.xlsx")
+rendimientosFigura=read.xlsx("rendimientosFigura.xlsx")
+preciosb100Figura=read.xlsx("preciosB100Figura.xlsx")
+```
+
+## Proceso de inversión y perfiles de inversión
+
+En este tema se abordará cómo es que se debe seguir una serie de 4 pazos secillos para definir y administrar una estrategia de inversiones. Dentro de estos pasos y de manera implícita, se revisará cómo es que se perfila el perfil de inversión (grado de aversión al riesgo) de una persona. 
+
+Esto último de tal manera que dicha persona se pueda sentir con dicha estrategia en lo que al rendimiento que se espera obtener y al riesgo que se está dispuesta a asumir.
+
+La linea temática entonces es de 3 puntos:
+
+
+:::{.fragment .fade}
+1. Definir el inversionista como agente económico y diferenciarlo de un especulador o apostador.
+:::
+:::{.fragment .fade}
+2. Definir el proceso de inversión.
+:::
+:::{.fragment .fade}
+3. Haciendo un paréntesis en el paso del proceso de inversión, saber cómo determinar el perfil de inversionista
+:::
+
+
+## El proceso de inversiones (1): Consideraciones iniciales.
+
+Para tener un éxito al administrar inversiones en mercados de valores, es muy sugerido contar con una estrategia de inversión (como en las empresas que existe tal, así como un proceso administrativo). Es muy importante resaltar que no todas las personas tienen la misma estrategia y resulta demasiado simplista (por no decir ingenuo) seguir, sin analizar, recomendaciones del tipo “Lo más idóneo es invertir X% en acciones, Y% en bonos y Z% en oro o criptomonedas”. Esa forma de pensar no es del todo correcta y tiene sus potenciales riesgos a nuestro patrimonio.
+
+## El proceso de inversiones (2): Consideraciones iniciales.
+
+Primero hay que recordar que el hecho de invertir es una actividad que realizaremos con nuestro dinero (en muchas ocasiones la única o la más importante parte de nuestro patrimonio) y esta se enfoca a dar los resultados que deseamos en el futuro. Este futuro, según el estandar de plazos que se definirán aquí1, puede ser cercano o de corto plazo (menos de un año), mediano (3 a 10 años) o de largo plazo (más de 10 años).
+
+## El proceso de inversiones (3): Consideraciones iniciales.
+
+Por ejemplo, no es lo mismo invertir nuestro dinero con miras a que, con el dinero que invirtamos de aquí a 1 año o 3, compremos un coche, nos vayamos de viaje o paguemos nuestros gastos de titulación o los de nuestros hijos (este último podría tener más de 10 años vista para cumplirse). En este caso, nos interesará invertir en valores o un portafolio de valores que nos pague el mayor rendimiento, con el menor prospecto de pérdidas potenciales (en parte lo que se definirá como riesgo o exposición al riesgo). Esto si nuestra inversión es de corto plazo. Sin embargo, si la inversión es de largo plazo (como el fondo de educación de nuestros hijos dentro de más de 10 año), nuestra exposición al riesgo y el rendimiento que esperamos ganar podrá ser mayor ya que tenemos más tiempo para recuperar las minusvalías o pérdidas de valor en el corto plazo.
+
+
+## El proceso de inversiones (3): Consideraciones iniciales.
+
+Veamos 2 gráficas comparativas de los rendimientos que han pagado los CETES de 28 días (CETES28D), los bonos M (BONOSM), el índice accionario IPC (el fondo NAFTRAC) y el oro (ORO) en el periodo de 2010 a septiembre de 2013.
+
+::: {#fig-figura1}
+```{r figura1, echo=FALSE}
+# Gráfica de precios históricos:
+figura1a=plot_ly()
+figura1a=add_trace(figura1a,x=~Fecha,y=~Nivel,color=~Mercado,data=preciosb100Figura,mode="lines",type="scatter")
+
+# Gráfica de caja de rendimientos:
+figura1b=plot_ly()
+figura1b=add_trace(figura1b,color=~Mercado,y=~Rendimiento,data=rendimientosFigura,type="box")
+figura1b
+
+# Gráfica general:
+figura1=subplot(figura1a,figura1b,nrows=2)%>% layout(title="Precios y comportamiento de largo plazo de varios tipos de valores")
+
+figura1
+```
+
+:::
+
+En la misma se aprecia el precio histórico de 5 índices o *benchmakrs* con periodos diarios desde el 4 de enero del 2001 al 30 de septiembre de 2024^[La gráfica superior representa valores base 100 al 4 de enro de 2001. Esta gráfica se lee como el valor que tiene, en diferentes fechas, 100 puntos o \$100.00 invertidos en ese tipo de valor, en la fecha inicial, a lo largo del tiempo.]:
+
+1. El índice de CETES a 28 días (CETES28D) publicado por la empresa de valuación [VALMER](https://www.valmer.com.mx/en/#), propiedad de la Bolsa Mexicana de Valores, y Standard & Poors.
+2. El índice de bonos M (BONOSM) publicado por la misma empresa de valuación.
+3. El índice de bonos corporativos (bonosCorporativos) mexicanos de VALMER.
+4. El índice accionario IPC de la Bolsa Mexicana de Valores (IPC).
+5. El índice accionario Dow Jones (DowJones) de las Bolsas de Nueva York y el NASDAQ denominado en pesos mexicanos (MXN).
+
+Como se puede apreciar en la gráfica superior, el *benchmark* CETES28D es el que ha tenido un rendimiento más estable durante el periodo de análisis y, en la gráfica de diagramas de caja, es el que rendimientos más "estables" o menos variables (menos **volátiles** sería el término técnico) ha mostrado.
+
+Los bonos M (bonos gubernamentales a tasa fija) y los bonos corporativos son los que le siguen en el mayor pago de rendimiento acumulado y menor variabilidad.
+
+Finalmente, los índices IPC y Dow Jones son los 2 tipos de activos que más volatilidad, riesgo o variabilidad han mostrado y son, en el caso más específico del IPC, los que más rendimiento acumulado han pagado a las y los inversionistas.
+
+## El proceso de inversiones (4): Consideraciones iniciales.
+
+Antes de iniciar el proceso de inversiones, es importante, plantear algunas definiciones importantes:
+
+:::{.fragment .fade}
+1. **Rendimiento**: Es la gananca o pérdida que se tiene en la inversión en un periodo de tiempo $t$. Esta se puede cuantificar de 2 maneras:
+    a. Plus/Minus valía ($P/L$): Es la diferencia del precio o valor de la inversión $P_t$ en el periodo $t$ y el precio o valor de la inversión en un periodo previo $t-n$: $P/L_{t}=P_t-P_{t-n}$
+    b. Rendimiento porcentual ($r_t$): Es la relación entre el precio o valor de la inversión en el periodo $t$ y el precio o valor de la inversión en un periodo previo $t-n$: $r_t=\frac{P_t-P_{t-n}}{P_{t-n}}$. 
+    c. **Para fines de valuación, el rendimiento $r_t$ será la variable de interés y la que utilizaremos para determinar el precio de un valor o inversión**. 
+:::
+:::{.fragment .fade}
+2. **Rendimiento esperado**: Es el rendimiento que la o el inversionista espera ganar en un periodo determinado ($E_{r}$). Existen varios métodos para determinar el mismo y se entiende que este tipo de rendimiento es el que se espera ganar "en promedio" o en virtud de agún método cuantitativo de confianza, en un periodo de tiempo $t$. 
+:::
+:::{.fragment .fade}
+3. **Riesgo**: "En la vida no siempre se tiene lo que se espera" es un adagio que siempre se tiene presente de manera general. El mismo nos hace una relfexión en las inversiones de que "una cosa es el rendimeiento que esperamos ganar $E_r$ y otra cosa el que vamos a obtener ($r_t$). Partiendo de esto, el riesgo $\sigma_{r}$ es la diferencia promedio o esperada que se espera tener entre el rendimiento esperado y el rendimiento observado.
+:::
+
+## Perfil de inversionista (1): Definiciones y conceptoa previos
+
+Partiendo de lo previo, se tiene entonces 2 métricas de interés para el análisis y selección de inversiones [@Markowitz1952;@Bodie2009]:
+
+- El rendimiento esperado $E_R$ que se considera algo **bueno** y deseable.
+- El riesgo $\sigma_R$ que se considera algo **malo** y no deseable.
+
+
+## Perfil de inversionista (2): Definiciones y conceptoa previos
+
+Lo anterior lleva a definir claremente la diferencia entre 3 tipos de "agentes" o personas: apostador(a), especulador (a) e inversionista:
+
+:::{.fragment .fade}
+1. **Apostador(a)**: Es una persona que le gusta utilizar su dinero en juegos de azar. **Su única motivación es la de tomar riesgo** ($\sigma_r$). No le importa cuanto pueda ganar o perder ($r_t$) sino el placer de tomar un riesgo. A puesta por el placer de tomar más riesgo.
+:::
+:::{.fragment .fade}
+2. **Especulador(a)**: Es una persona que solo le interesa el rendimiento que espera tener ($E_r$) y, mientras mayor rendimiento tenga, es mejor. En su análisis no importa (o tiene muy poca importancia) las pérdidas potenciales o nivel de reisgo al que se expone. Solo importa el rendimiento ganado.
+:::
+:::{.fragment .fade}
+3. **Inversionista**: Es una persona que busca un equilibrio entre el rendimiento esperado ($E_r$) y el riesgo ($\sigma_r$) que está dispuesta a asumir. En este caso, el inversionista busca maximizar el rendimiento esperado, minimizar el riesgo y, en caso de tener que asumir un riesgo, que este sea el menor posible.
+:::   
+
+## Perfil de inversionista (3): Definiciones y conceptoa previos
+
+Partiendo de lo anterior, el inversionista utiliza las 2 dimensiones o variables de interés: rendimiento esperado y reisgo. A mayor cuantía del primero y menor del segundo mas *feliz* o *satisfecho* estará la o el inversionista.
+
+Desafortunadamente, como lo demuestra la @fig-figura1, el obtener **mayor rendimiento**, implica una **mayor exposición al riesgo**.
+
+Partiendo de esto, se debe hacer una selección de inversiones que, de manera equilibrada, lleve a la mayor **satisfacción** o **felicidad** de la o el inversionista. Esto se logra a través de un concepto propio de la Microeconomía: la **utilidad** o **función de utilidad**.
+
+
+## Perfil de inversionista (4): Definiciones y conceptoa previos
+
+El objetivo de la o el inversionista es elegir el invertir en 2 tipos de valores:
+
+:::{.fragment .fade}
+1. Un activo libre de riesgo (cuyo rendimiento esperado es $rf$) que es aqué que se considera como el valor que le pagará un rendimiento $rf$ con la mínima fluctuacion o riesgo posible ($\omega_{rf}\approx0$). En México la tasa de CETES de 28 días en mercado secundario se considara tal valor libre de riesgo.
+:::
+:::{.fragment .fade}
+2. Un valor o portafolio de valores $P$ que le pagará un rendimiento esperado $E_r$ y que tendrá un nivel de exposicón al riesgo $\sigma_P>\sigma_{rf},\text{ }\sigma_{rf}\approx0$.
+:::
+
+El problema o decisión de la o el inversionista se reduce a determinar cuánto o qué porcentaje ($\Omega$) del total de su ahorro o patrimonio invertirá en el portafolio de valores o valor riesgoso $P$ y cuánto o qué porcentaje ($100\%-\Omega$) lo hará en el activo libre de riesgo $rf$. 
+
+
+## Perfil de inversionista (5): Definiciones y conceptos previos
+
+Como se mencionó previamente, la o el inversionista deberá determinar el nivel de inversión $\Omega$ en el portafolio o valor riesgoso. Esta decisión es muy personal y se puede resolver a través de una función matemática que, en Microeconomía, se conoce como una **función de utilidad**. Según [@Markowitz1952;@Bodie2009], la función de utilidad es una función matemática que puede tener muchas formas, siendo la más utilizada la siguiente:
+
+$$U(E_P,\sigma_P)=E_P-\frac{1}{2}A\sigma_p^2$$
+En la misma se puede apreciar que el rendimiento esperado (primer término de la derecha o $E_P$) es algo "bueno" y deseable y el riesgo (segundo término de la derecha o $\sigma_P$) es algo "malo" que se desea reducir.
+
+De esta expresión, es importante resaltar $A$. Este coeficiente es lo que hace personal la selección de inversiones y se le denomina **coeficiente de aversión al riesgo**. 
+
+## Perfil de inversionista (6): Determinación del perfil de inversionista
+
+En base a lo rpeviamente citado, el coeficiente de aversión al riesgo puede tener la siguiente interpretación:
+
+:::{.fragment .fade}
+1. Si $A<4$, el inversionista es **poco averso al riesgo**. En este caso, la o el inversionista está dispuesto a asumir un mayor riesgo a cambio de un mayor rendimiento.
+:::
+:::{.fragment .fade}
+2. Si $4\leq A\leq 6$, el inversionista es **neutral al riesgo**. En este caso, el nivel de riesgo y rendimiento preferido es intermedio.
+:::
+:::{.fragment .fade}
+3. Si $A>6$, el inversionista es **muy averso al riesgo**. En este caso, la o el inversionista está dispuesto a asumir un menor riesgo a cambio de un menor rendimiento.
+:::
+
+## Perfil de inversionista (7): Determinación del perfil de inversionista
+
+En la nomenclatura "convencional" en la práctica profesional de inversiones, se pueden tener los siguientes términos:
+
+:::{.fragment .fade}
+1. **Conservador(a)**: Es aquella persona que tiene un coeficiente de aversión al riesgo $A>6$. En este caso, la o el inversionista prefiere invertir en valores o portafolios de valores con un menor nivel de riesgo y, en caso de tener que asumir un riesgo, que este sea el menor posible.
+:::
+:::{.fragment .fade}
+2. **Moderado(a)**: Es aquella persona que tiene un coeficiente de aversión al riesgo $4\leq A\leq 6$. En este caso, la o el inversionista prefiere invertir en valores o portafolios de valores con un nivel de riesgo y rendimiento intermedio.
+:::
+:::{.fragment .fade}
+3. **Agresivo(a)**: Es aquella persona que tiene un coeficiente de aversión al riesgo $A<4$. En este caso, la o el inversionista prefiere invertir en valores o portafolios de valores con un mayor nivel de riesgo y, en caso de tener que asumir un riesgo, que este sea el mayor posible.
+:::
+
+## Perfil de inversionista (8): Determinación del perfil de inversionista
+
+La forma de determinar el nivel de aversión al riesgo y, en consecuencia, el perfil de inversionista, se hace por medio de cuestionarios psicométricos como el ejemplo de la siguente hoja de cálculo:
+
+[Ejemplo de cuestionario de perfilamiento de inversionista](https://www.dropbox.com/scl/fi/aomfsiaom3f914teejtqi/conoceTuCliente.xlsx?rlkey=bot1le7g44lxmgcu8gxqg8omx&raw=1)
+
+
+## Referencias citadas
