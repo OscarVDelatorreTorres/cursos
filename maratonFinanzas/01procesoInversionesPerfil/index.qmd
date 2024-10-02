@@ -1,5 +1,5 @@
 ---
-title: "Proceso de inversión y perfiles de inversión"
+title: "Definiciones previas al proceso de administración de inversiones: perfiles de inversión"
 author: "Dr. Oscar V. De la Torre Torres"
 title-slide-attributes:
   data-background-size: contain
@@ -9,7 +9,7 @@ format:
     controls-tutorial: true
     transition: fade
     scrollable: true  
-    footer: "Proceso de inversión y perfiles de inversión"
+    footer: "Perfiles de inversión"
     slide-number: true
     preview-links: true
     progress: true
@@ -221,6 +221,25 @@ En la nomenclatura "convencional" en la práctica profesional de inversiones, se
 La forma de determinar el nivel de aversión al riesgo y, en consecuencia, el perfil de inversionista, se hace por medio de cuestionarios psicométricos como el ejemplo de la siguente hoja de cálculo:
 
 [Ejemplo de cuestionario de perfilamiento de inversionista](https://www.dropbox.com/scl/fi/aomfsiaom3f914teejtqi/conoceTuCliente.xlsx?rlkey=bot1le7g44lxmgcu8gxqg8omx&raw=1)
+
+## El proceso de administración de inversiones
+
+Una vez definido los perfiles de inversionista es que se puede plantear el proceso de administración de inversiones. Este proceso consta de 4 pasos:
+
+El proceso de administración de inversiones consta de 4 pasos:
+
+1.  Establecer los objetivos de inversión.
+2.  Establecer una política de inversión.
+3.  Ejecutar la política de inversión o administración de portafolios (adquirir los valores de interés, según el paso anterior).
+4.  Medir y evaluar el resultado de la estrategia.
+
+La siguiente figura interactiva ilustra la idea:
+
+::: {style="width: 640px; height: 480px; margin: 10px; position: relative;"}
+<iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://lucid.app/documents/embedded/4ba52f20-c439-4847-970a-56c9a294c454" id="mf.RxtcAXE4J">
+
+</iframe>
+:::
 
 
 ## Referencias citadas
