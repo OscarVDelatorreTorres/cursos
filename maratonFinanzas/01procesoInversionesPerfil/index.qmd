@@ -19,6 +19,7 @@ format:
     logo: umsnh.png
 bibliography: biblio.bib
 bibliographystyle: cyaunames.csl
+lang: es-ES
 ---
 
 ```{r setup, include=FALSE}
@@ -235,11 +236,11 @@ El proceso de administración de inversiones consta de 4 pasos:
 
 La siguiente figura interactiva ilustra la idea:
 
-::: {style="width: 640px; height: 480px; margin: 10px; position: relative;"}
+:::{#fig-figura2}
+
 <iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://lucid.app/documents/embedded/4ba52f20-c439-4847-970a-56c9a294c454" id="mf.RxtcAXE4J">
 
 </iframe>
+
 :::
-
-
 ## Referencias citadas
