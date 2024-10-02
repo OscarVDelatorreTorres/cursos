@@ -1,0 +1,211 @@
+---
+title: "Revisión detallada del proceso de inversiones"
+author: "Dr. Oscar V. De la Torre Torres"
+title-slide-attributes:
+  data-background-size: contain
+  data-background-opacity: "0.5"
+format: 
+  revealjs:
+    controls-tutorial: true
+    transition: fade
+    scrollable: true  
+    footer: "Proceso de administración de inversiones"
+    slide-number: true
+    preview-links: true
+    progress: true
+    history: true   
+    chalkboard: true
+    smaller: true
+    logo: umsnh.png
+bibliography: biblio.bib
+bibliographystyle: cyaunames.csl
+lang: es-ES
+---
+
+```{r setup, include=FALSE}
+library(dplyr)
+library(tidyverse)
+library(plotly)
+library(openxlsx)
+library(MSGARCH)
+library(DT)
+library(stargazer)
+library(reticulate)
+library(DescTools)
+library(MASS)
+library(data.table)
+library(reticulate)
+library(tidyquant)
+
+# Tablas de datos de entrada:
+
+precios=read.xlsx("precios.xlsx")
+rendimientos=read.xlsx("rendimientos.xlsx")
+preciosb100=read.xlsx("preciosb100.xlsx")
+
+preciosFigura=read.xlsx("preciosFigura.xlsx")
+rendimientosFigura=read.xlsx("rendimientosFigura.xlsx")
+preciosb100Figura=read.xlsx("preciosB100Figura.xlsx")
+```
+
+## El proceso de administración de inversiones
+
+Como se vio en su momento, el proceso de administración de inversiones consta de 4 pasos:
+
+1.  Establecer los objetivos de inversión.
+2.  Establecer una política de inversión.
+3.  Ejecutar la política de inversión o administración de portafolios (adquirir los valores de interés, según el paso anterior).
+4.  Medir y evaluar el resultado de la estrategia.
+
+La siguiente figura interactiva ilustra la idea y se estudia cada paso en detalle en este tema:
+
+:::{#fig-figura2}
+
+<iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://lucid.app/documents/embedded/4ba52f20-c439-4847-970a-56c9a294c454" id="mf.RxtcAXE4J">
+
+</iframe>
+
+:::
+
+## Paso 1 del proceso de inversión: Establecer los objetivos de inversión (1)
+
+En el primer paso del proceso de administración de inversiones se debe perfilar la forma de pensar y sentir de la o el inversionista si se trata de una persona física. Esto se revisó en el [tema de perfiles de inversión](https://oscarvdelatorretorres.github.io/cursos/maratonFinanzas/01procesoInversionesPerfil/).
+
+Si se es una persona moral o **inversionista institucional** (como una aseguradora, fondo de inversión, banco o AFORE), se deben establecer los objetivos de inversión. Lo mismo debe suceder con las personas físicas como nosotros. Por lo general, los inversionistas institucionales deben cubrir un pasivo futuro cierto o contingente como es el ejercicio de un gasto de capital (inversión en capacidad instalada, mejor conocido como *CAPEX* en la terminología de las finanzas corporativas), o deben cubrir el pago de una pensión o un siniestro asegurado por parte del inversionista institucional. Este tipo de inversionista y el perfilamiento del mismo se tratará en el siguiente apartado (que también puede ser de aplicación a personas físicas). 
+
+Una vez definidos los objetivos de inversión (objetivos financieros a cumplir en el futuro), es necesario plantearse el perfil de inversionista que se tiene. Como se comentaba previamente, no todas las personas piensan y sienten igual y, en consecuencia, una inversión no es igual para ellas.
+
+Para poder definir el perfil de inversionista se debe seguir un proceso psicométrico como se mencionó en el tema correspondiete.
+
+## Paso 1 del proceso de inversión: Establecer los objetivos de inversión (2)
+
+Como resumen general del primer paso, se tienen que definir los objetivos de inversión. Esto implica definir 3 cosas:
+
+1. ¿Qué vamos a hacer con nuestro dinero ahorrado o que vayamos ahorrando en el futuro?
+2. ¿Cuándo vamos a necesitar nuestro ahorro? Es decir, cuándo vamos a vender toda o parte de nuestra inversión para realizar el objetivo financiero previamente planteado.
+3. Conocernos interna y personalmente. Es decir, definir el tipo de perfil de inversionista que somos.
+
+Una vez definidos los objetivos de inversión, se debe plasmar nuestra estrategia de inversión. Esto preferentemente en un documento en donde definiremos las reglas claras del juego. Es decir, las reglas (o políticas) que debe seguir nuestra estrategia de inversión. Como se ha mencionado, esto se plasma en se documento llamado **política de inversión** que se revisará en el segundo paso del proceso de administración de inversiones.
+
+## Paso 2 del proceso de inversión: Establecer una política de inversión (1)
+
+El segundo paso consiste en, dados los objetivos de inversion planteados en el paso anterior, determinar los tipos de valores que interesa invertir, así como los límites máximos y mínimos de inversión en cada caso.
+
+## Paso 2 del proceso de inversión: Establecer una política de inversión (2)
+
+La política de inversión **es ese documento en donde se establecen los objetivos de la inversión a realizar, los tipos de valores (mercados) en los que se desea invertir, así como las pérdidas potenciales que se desea tener si se presentan movimientos aversos en el mercado**. Para poder llegar a ese documento de la política de inversión se deben seguir 4 pasos:
+
+:::{.fragment .fade}
+1. Definir los tipos de valores (mercados) en los que se desea invertir. 
+:::
+:::{.fragment .fade}
+2. Determinar los niveles máximo ($\omega_{i,max}$) y mínimo ($\omega_{i,min}$) de exposición o inversión en los que se desea tener para la inversión en cada activo.
+:::
+:::{.fragment .fade}
+3. Definir el índice o *benchmark* que se va a utilizar para comparar el desempeño del portafolio administrado *versus* el de este índice.
+:::
+:::{.fragment .fade}
+4. Definir si se va a utilizar una administración de inversiones pasiva o una activa.
+:::
+
+## Paso 2 del proceso de inversión: Establecer una política de inversión (3)
+
+Los pasos 1 a 2 de este procedimiento de la política de inversión llevan a lo que se conoce como **la asignación de activos** (conocida como *asset allocation* en la literatura de habla inglesa) en un portafolio. Es decir, la asignación de los tipos de valores (mercados) en los que se va a invertir, los límites máximo y mínimo de inversión y, de ser necesario según el tipo de administración (activa o pasiva como se definirá en breve), los niveles de inversión $\omega_i$ en cada tipo de valor.
+
+En estos primeros pasos del proceso de administración de inversiones solo se hará mención de estos 2 pasos que definen la **asignación de activos**. Esta asignación de activos se logra al realizar los siguientes 6 pasos:
+
+1. Los tipos de valores riesgosos en los que se invertirá para conformar el portafolio de valores riesgosos $P$.
+2. Los niveles de inversión máximo y mínimo en cada tipo de valor riesgoso en $P$.
+3. Los niveles de inversión óptimos en cada tipo de valor riesgoso en $P$.
+4. El activo libre de riesgo $rf$ en el que se invertirá el resto del capital que no se invierta en $P$.
+5. El nivel de inversión deseado ($\omega^*_i$) en el portafolio riesgoso $P$.
+6. Definir un portafolio, valor o índice de referencia (*benchmark*) $M$ para comparar el desempeño del portafolio $P$ administrado.
+
+## Paso 2.1 del proceso de inversión: Definir los tipos de valores riesgosos en los que se invertirá para conformar el portafolio de valores riesgosos $P$
+
+Para realizar este primer paso de la asignación de activos, se deben tener claros los objetivos financieros (objetivos de inversión) y un conocimiento previo del tipo de mercados (valores) en los que se puede invertir. Por ejemplo, si un fondo de pensiones (como puede ser [Pensiones Civiles del Estado de Michoacán](https://pensiones.michoacan.gob.mx/)) no se siente cómo invirtiendo en valores denominados en moneda extranjera por recelo a fluctuaciones cambiarias adversas, o no quiere invertir en oro o petróleo, simplemente excluye este tipo de valores de su lista y se queda con aquellos que desea.
+
+Pare fines de exposición se supondrá que se tiene un portafolio que invertirá en bonos M del gobierno Federal, en bonos corporativos mexicanos, en acciones mexicanas y en acciones de los EEUU. Esto como los valores del portafolio riesgoso $P$. De manera complementaria, se invertirá en un activo libre de riesgo $rf$ que serán los CETES de 28 días de vencimiento.
+
+La siguiente figura, muestra su comportamiento:
+
+::: {#fig-figura1}
+```{r figura1, echo=FALSE}
+# Gráfica de precios históricos:
+figura1a=plot_ly()
+figura1a=add_trace(figura1a,x=~Fecha,y=~Nivel,color=~Mercado,data=preciosb100Figura,mode="lines",type="scatter")
+
+# Gráfica de caja de rendimientos:
+figura1b=plot_ly()
+figura1b=add_trace(figura1b,color=~Mercado,y=~Rendimiento,data=rendimientosFigura,type="box")
+figura1b
+
+# Gráfica general:
+figura1=subplot(figura1a,figura1b,nrows=2)%>% layout(title="Precios y comportamiento de largo plazo de varios tipos de valores")
+
+figura1
+```
+:::
+
+## Paso 2.2 del proceso de inversión: Determinar los niveles máximo y mínimo de exposición o inversión en los que se desea tener para la inversión en cada activo
+
+De manera complementaria en el paso anterior, se deben definir los niveles máximo y mínimo de inversión en cada tipo de valor riesgoso en $P$. Esto dependerá tanto de la selección óptima como de las preferencias personales. Para fines de exposicón, se su pondrá que se tienen los siguientes límites de inversión deseados por tipo de valor deseado:
+
+```{r}
+# Límites de inversión:
+limitesInversion=read.xlsx("politicaInversion.xlsx")
+limitesInversion$LimInferior=paste0(limitesInversion$LimInferior*100,"%")
+limitesInversion$LimSuperior=paste0(limitesInversion$LimSuperior*100,"%")
+datatable(limitesInversion,rownames=FALSE,colnames=c("Tipo de valor"="tipoValor","Límite inferior"="LimInferior","Límite superior"="LimSuperior"))
+```
+
+## Paso 2.3 del proceso de inversión: Cuantificar Los niveles de inversión óptimos en cada tipo de valor riesgoso en $P$.
+
+Este paso consiste en determinar el nivel de inversión óptimo en cada valor ($\omega_i$) y puede hacerse de múltiples maneras. 
+
+Una muy común es simplemente invertir a "partes" iguales ($\omega_i=1/N$) en cada uno de los $N$ valores objeto de interés. esto se hace siempre y cuando este nivel de inversion máximo y mínimo previamente definidos.
+
+Otra manera es investigar los niveles de inversión que cada valor tiene en un índice de referencia o *benchmark* $M$ y replicarlos en el portafolio $P$. Por ejemplo, si el índice de referencia $M$ tiene un 10% de inversión en acciones de los EEUU, se puede replicar este nivel de inversión en el portafolio $P$. Otro ejemplo sería un fondo que replica el comportamiento del índice de precios y cotizaciones de la bolsa mexicana de valores (como el fono o ETF NAFTRACIshrs). En este caso, el administrador del fondo busca replicar los niveles de inversión $\omega_i$ en cada valor que forma parte de dicho índice o portafolio de mercado $M$.
+
+Una manera alternativa es utilizar un modelo de optimización de portafolios como el modelo de Markowitz o el modelo de Black-Litterman para determinar los niveles de inversión óptimos en cada valor riesgoso en $P$. Este tipo de modelo no se verá aquí ya que corresponde a un curso de finanzas cuantitativas, ingeniería financiera, o de matemáticas financieras.
+
+## Paso 2.4 del proceso de inversión: Definir el activo libre de riesgo $rf$ en el que se invertirá el resto del capital que no se invierta en $P$
+
+La selección del activo libre de riesgo $rf$ es una decisión importante en la administración de inversiones ya que determinará el nivel de **prima de riesgo** que paga el rendimiento esperado $E_P$ del portafolio de valores riesgosos. Esta prima de riesgo es la diferencia entre el rendimiento esperado del portafolio de valores riesgosos $E_P$ y el rendimiento esperado del activo libre de riesgo $rf$:
+
+$$\text{prima de riesgo}=E_p-rf\text{ (1)}$$
+Es importante señala que, mientras mayor sea la prima de riesgo del portafolio riesgoso, más atractivo puede ser el portafolio de valores riesgosos $P$.
+
+Es importante señala que la selección del activo libre de riesgo también dependerá de las preferencias personales ya que quizá, en algunas ocasiones, la tasa de CETES de 28 días (el estándar mexicano) puede tener un rendimiento menor al de la inflación. En casos como eso, el nivel de tasa libre de riesgo deseado puede elegirse como el rendimiento de otro valor u otro nivel de tasa deseado. Eso sucede generalmente en inversionistas como las AFOREs de personas ya jubiladas que buscan pagar un rendimiento mayor a la tasa de inflación (buscan pagar **una tasa real positiva**).
+
+## Paso 2.5 del proceso de inversión: El nivel de inversión deseado ($\omega^*_i$) en el portafolio riesgoso $P$ (1)
+
+Ya que se ha definido el activo libre de riesgo $rf$ y los niveles de inversión en cada valor riesgoso en $P$, se puede cuantificar el rendimiento esperado del portafolio de valores riesgosos $E_P$ y el nivel de riesgo del portafolio de valores riesgosos $\sigma_P$. 
+
+El primero se cuantifica partiendo de los rendimientos esperados en cada valor de $P$ ($E_{r_i}$) junto con el nivel de inversión en cada valor de $P$ ($\omega_i$). El rendimiento esperado del portafolio de valores riesgosos $E_P$ se cuantifica como:
+
+$$E_P=\sum_{i=1}^N\omega_i\cdot E_{r_i}\text{ (2)}$$
+
+## Paso 2.5 del proceso de inversión: El nivel de inversión deseado ($\omega^*_i$) en el portafolio riesgoso $P$ (2)
+
+El nivel de riesgo del portafolio de valores riesgosos $\sigma_P$ se cuantifica como:
+
+$$\sigma_P=\sqrt{\sum_{i=1}^N\sum_{j=1}^N\omega_i\omega_j\sigma_{r_i,r_j}}\text{ (3)}$$
+Es importante señalar el cálculo del riesgo depende de 2 métricas estadísticas:
+
+1. La varianza de un activo ($\sigma_{r_i}^2=\sigma_{r_i,r_i}$)
+2. La covarianza entre 2 activos ($\sigma_{r_i,r_j}$)
+
+El segundo parámetro es muy importante ya que mide el grado de relación entre 2 activos. Si la covarianza es positiva, los activos se mueven en la misma dirección. Si la covarianza es negativa, los activos se mueven en direcciones opuestas. Si la covarianza es cero, los activos no tienen relación alguna. 
+
+Un aspecto importante de invertir de manera diversificada es el hecho de que algunos activos pueden tener covarianzas negativas, lo que hace que el riesgo total del portafolio se reduzca. Esto al tener 2 o mas valores que se mueven en sentido inverso a los otros.
+
+## Paso 2.5 del proceso de inversión: El nivel de inversión deseado ($\omega^*_i$) en el portafolio riesgoso $P$ (2)
+
+
+
+
+se debe definir el nivel de inversión deseado en el portafolio riesgoso $P$. Este nivel de inversión deseado se define como:
+
+
+## Referencias citadas
