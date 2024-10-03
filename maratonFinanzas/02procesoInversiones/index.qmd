@@ -159,7 +159,7 @@ limitesInversion$LimSuperior=paste0(limitesInversion$LimSuperior*100,"%")
 datatable(limitesInversion,rownames=FALSE,colnames=c("Tipo de valor"="tipoValor","Límite inferior"="LimInferior","Límite superior"="LimSuperior"))
 ```
 
-## Paso 2.3 del proceso de inversión: Cuantificar Los niveles de inversión óptimos en cada tipo de valor riesgoso en $P$.
+## Paso 2.3 del proceso de inversión: Cuantificar Los niveles de inversión óptimos en cada tipo de valor riesgoso en $P$. (1)
 
 Este paso consiste en determinar el nivel de inversión óptimo en cada valor ($\omega_i$) y puede hacerse de múltiples maneras. 
 
@@ -168,6 +168,23 @@ Una muy común es simplemente invertir a "partes" iguales ($\omega_i=1/N$) en ca
 Otra manera es investigar los niveles de inversión que cada valor tiene en un índice de referencia o *benchmark* $M$ y replicarlos en el portafolio $P$. Por ejemplo, si el índice de referencia $M$ tiene un 10% de inversión en acciones de los EEUU, se puede replicar este nivel de inversión en el portafolio $P$. Otro ejemplo sería un fondo que replica el comportamiento del índice de precios y cotizaciones de la bolsa mexicana de valores (como el fono o ETF NAFTRACIshrs). En este caso, el administrador del fondo busca replicar los niveles de inversión $\omega_i$ en cada valor que forma parte de dicho índice o portafolio de mercado $M$.
 
 Una manera alternativa es utilizar un modelo de optimización de portafolios como el modelo de Markowitz o el modelo de Black-Litterman para determinar los niveles de inversión óptimos en cada valor riesgoso en $P$. Este tipo de modelo no se verá aquí ya que corresponde a un curso de finanzas cuantitativas, ingeniería financiera, o de matemáticas financieras.
+
+## Paso 2.3 del proceso de inversión: Cuantificar Los niveles de inversión óptimos en cada tipo de valor riesgoso en $P$. (2)
+
+Para fines de exposición, se supondrá que se siguió un método cuantitativo de selección de valores y se llegó a los siguientes niveles de inversión en cada tipo de valor (tercera columna):
+
+```{r}
+# Niveles de inversión óptimos:
+nivelesInversion=read.xlsx("nivelesInversion.xlsx")
+wi=nivelesInversion$nivelInversion
+nivelesInversion$nivelInversion=paste0(nivelesInversion$nivelInversion*100,"%")
+nivelesInversion$LimInferior=paste0(nivelesInversion$LimInferior*100,"%")
+nivelesInversion$LimSuperior=paste0(nivelesInversion$LimSuperior*100,"%")
+
+datatable(nivelesInversion,rownames=FALSE,colnames=c("Tipo de valor"="tipoValor","Nivel de inversión"="nivelInversion","Límite inferior"="LimInferior","Límite superior"="LimSuperior"))
+```
+
+**NOTA:** Se excluye la inversión en CETES de 28 días ya que será el activo libre de riesgo a utilizar.
 
 ## Paso 2.4 del proceso de inversión: Definir el activo libre de riesgo $rf$ en el que se invertirá el resto del capital que no se invierta en $P$
 
@@ -200,12 +217,187 @@ El segundo parámetro es muy importante ya que mide el grado de relación entre 
 
 Un aspecto importante de invertir de manera diversificada es el hecho de que algunos activos pueden tener covarianzas negativas, lo que hace que el riesgo total del portafolio se reduzca. Esto al tener 2 o mas valores que se mueven en sentido inverso a los otros.
 
-## Paso 2.5 del proceso de inversión: El nivel de inversión deseado ($\omega^*_i$) en el portafolio riesgoso $P$ (2)
+## Paso 2.5 del proceso de inversión: El nivel de inversión deseado ($\omega^*_i$) en el portafolio riesgoso $P$ (3)
+
+Para ilustrar la covarianza con los activos de interés, se tiene un acomodo matricial llamado **matriz de covarianzas**. Veamos en el ejemplo de los 5 tipos de activo:
 
 
+:::{.panel-tabset}
 
+## Matriz de covarianzas (datos)
+
+```{r}
+# Matriz de covarianzas:
+covarianzas=cov(rendimientos[,2:(ncol(rendimientos)-1)])
+datatable(round(covarianzas,4),rownames=TRUE,colnames=colnames(covarianzas))
+```
+
+## Diagrama de calor
+```{r}
+
+plot_ly(x=colnames(covarianzas),y=colnames(covarianzas),
+        z=covarianzas,type="heatmap", colors = colorRamp(c("red", "green")))
+
+```
+:::
+
+En los elementos diagonales se presenta la varianza (cuadrado del riesgo o desviación estándar) de cada valor y en los elementos no diagonales las covarianzas o el sentido en el que se mueven los precios de los valores.
 
 se debe definir el nivel de inversión deseado en el portafolio riesgoso $P$. Este nivel de inversión deseado se define como:
 
+## Paso 2.5 del proceso de inversión: El nivel de inversión deseado ($\omega^*_i$) en el portafolio riesgoso $P$ (3)
 
-## Referencias citadas
+Será necesario calcular el rendimiento esperado de cada valor $E_{r_i}$. Una de las formas más sencillas y convencionales de calcular este pronóstico o valor esperado es el promedio o media aritmética:
+
+$$E_{r_i}=\frac{\sum_{t=1}^T r_{i,t}}{T}\text{ (4)}$$
+Esto lleva a los siguientes cálculos:
+
+```{r}
+# Rendimientos esperados:
+rendEsperado=colMeans(rendimientos[,2:(ncol(rendimientos)-1)])
+nivelesInversion$RendimientoEsperado=paste0(round(rendEsperado*100,2),"%")
+
+datatable(nivelesInversion,rownames=FALSE,colnames=c("Tipo de valor"="tipoValor","Nivel de inversión"="nivelInversion","Rendimiento esperado"="RendimientoEsperado","Límite inferior"="LimInferior","Límite superior"="LimSuperior","Rendimiento esperado (diario)"="RendimientoEsperado"))
+```
+## Paso 2.5 del proceso de inversión: El nivel de inversión deseado ($\omega^*_i$) en el portafolio riesgoso $P$ (4)
+
+Para calcular el rendimiento esperado $E_P$ del portafolio riesgoso $P$ se realiza el siguiente cálculo:
+
+```{r}
+rendimientoPortafolio=sum(wi*rendEsperado)
+riesgoPortafolio=sqrt(t(wi)%*%covarianzas%*%wi)
+```
+
+$$\begin{array}{cc}
+E_P=&\omega_{CETES28D}\cdot E_{CETES28D}+\omega_{bonosM}\cdot E_{bonosM}+\\
+&\omega_{bonosCorporativos}\cdot E_{bonosCorporativos}+\\
+&\omega_{IPC}\cdot E_{IPC}+\omega_{DowJones}\cdot E_{DowJones}\\
+=& 35\%\cdot 3.51\%+15\%\cdot 4.25\%+\\
+& 20\%\cdot 4.75\%+\\
+& 15\%\cdot 5.25\%+15\%\cdot 6.25\%\\
+=& 3.8352\%
+
+
+\end{array}\text{ (5)}
+$$
+## Paso 2.5 del proceso de inversión: El nivel de inversión deseado ($\omega^*_i$) en el portafolio riesgoso $P$ (5)
+
+Para calcular el riesgo del portafolio de valores riesgosos $\sigma_P$ se realiza el siguiente cálculo dado en (3)
+
+$$\sigma_P=\sqrt{\begin{array}{cc}
+&\omega_{CETES28D}^2\cdot \sigma_{CETES28D}^2+\omega_{bonosM}^2\cdot \sigma_{bonosM}^2+\\
+&\omega_{bonosCorporativos}^2\cdot \sigma_{bonosCorporativos}^2+\\
+&\omega_{IPC}^2\cdot \sigma_{IPC}^2+\omega_{DowJones}^2\cdot \sigma_{DowJones}^2+\\
+&2\cdot \omega_{CETES28D}\cdot \omega_{bonosM}\cdot \sigma_{CETES28D,bonosM}+\\
+&2\cdot \omega_{CETES28D}\cdot \omega_{bonosCorporativos}\cdot \sigma_{CETES28D,bonosCorporativos}+\\
+&2\cdot \omega_{CETES28D}\cdot \omega_{IPC}\cdot \sigma_{CETES28D,IPC}+\\
+&2\cdot \omega_{CETES28D}\cdot \omega_{DowJones}\cdot \sigma_{CETES28D,DowJones}+\\
+&2\cdot \omega_{bonosM}\cdot \omega_{bonosCorporativos}\cdot \sigma_{bonosM,bonosCorporativos}+\\
+&2\cdot \omega_{bonosM}\cdot \omega_{IPC}\cdot \sigma_{bonosM,IPC}+\\
+&2\cdot \omega_{bonosM}\cdot \omega_{DowJones}\cdot \sigma_{bonosM,DowJones}+\\
+&2\cdot \omega_{bonosCorporativos}\cdot \omega_{IPC}\cdot \sigma_{bonosCorporativos,IPC}+\\
+&2\cdot \omega_{bonosCorporativos}\cdot \omega_{DowJones}\cdot \sigma_{bonosCorporativos,DowJones}+\\
+&2\cdot \omega_{IPC}\cdot \omega_{DowJones}\cdot \sigma_{IPC,DowJones}
+\end{array}}\text{ (6)}$$
+
+Sustituyendo los valores de la matriz de covarianzas y los niveles de inversión se tiene que el riesgo del portafolio del ejemplo es $\sigma_p=47\%$.
+
+Con el rendimiento esperado y el riesgo del portafolio de valores riesgoso se puede tener la siguiente simulacion de escenarios de rendimiento. El escenario optimista resulta de sumar al rendimiento esperado el riesgo ($E_p+\sigma_P$), el neutral es el rendimiento esperado y el pesimista es el rendimiento esperado menos el riesgo ($E_p-\sigma_P$):
+
+```{r}
+escenarios=data.frame(Escenario=c("Optimista","Neutral","Pesimista"),
+                      Rendimiento=c(paste0(round((rendimientoPortafolio+riesgoPortafolio)*100,4),"%"),
+                                    paste0(round(rendimientoPortafolio*100,4),"%"),
+                                    paste0(round((rendimientoPortafolio-riesgoPortafolio)*100,2),"%")))
+datatable(escenarios,rownames=FALSE,colnames=c("Escenario","Rendimiento"))
+```
+
+## Paso 2.5 del proceso de inversión: El nivel de inversión deseado ($\omega^*_i$) en el portafolio riesgoso $P$ (5)
+
+La representación gráfica de la relación riesgo-rendimiento tanto del activo libre de riesgo $rf$ como del portafolio de valores riesgosos $P$ es la siguiente:
+
+```{r}
+# Gráfica de riesgo-rendimiento:
+figura2=plot_ly()
+figura2=add_lines(figura2,
+                     x=c(0,riesgoPortafolio*100),
+                     y=c(mean(rendimientos$CETES28D)*100,rendimientoPortafolio*100),
+                     name="Línea de asignación de capital",
+                    line = list(color= "black", width=1, dash="dash")
+                     )
+figura2=add_trace(figura2,x=0,y=mean(rendimientos$CETES28D)*100,name="activo libre de riesgo: CETES28D",type="scatter",mode="markers",marker=list(size=10))
+figura2=add_trace(figura2,x=riesgoPortafolio*100,y=rendimientoPortafolio*100,name="portafolio de valores riesgosos: P",type="scatter",mode="markers",marker=list(size=10))
+
+
+figura2=layout(figura2,title="Riesgo-rendimiento del portafolio de valores riesgosos y del activo libre de riesgo",xaxis=list(title="Riesgo"),yaxis=list(title="Rendimiento esperado"))
+
+figura2
+```
+De esta se aprecia la relación riesgo-rendimiento que tendría 1 inversionista al invertir $\Omega=100\%$ en el activo libre de riesgo (CETES de 28 días en el punto naranja) o al invertir ese mismo porcentage en el portafolio de valores riesgosos $P$ (punto verde).
+
+La línea punteada se llama línea de asignación de capital y representa la relación riesgo-rendimiento de un portafolio que se puede obtener al combinar el activo libre de riesgo $rf$ con el portafolio de valores riesgosos $P$. Es decir, al tener niveles de inversión en el portafolio $P$ de $0\%<\Omega< 100\%$.
+
+Una vez definido el portafolio $P$, con los niveles de tasa libre de riesgo $rf$, y el riesgo $\sigma_P$ y rendimiento esperado $E_P$ del portafolio riesgoso, así como el grado de aversión al riesgo $A$ en la función de utilidad que se revisó en el [tema de perfiles de inversionista](https://oscarvdelatorretorres.github.io/cursos/maratonFinanzas/01procesoInversionesPerfil/#/title-slide), se tiene que el nivel óptimo de inversión en el portafolio riesgoso $P$ se da por el siguiente cálculo:
+
+$$\Omega^*=\frac{E_P-rf}{A \sigma_P^2}\text{ (7)}$$
+
+## Paso 2.5 del proceso de inversión: El nivel de inversión deseado ($\omega^*_i$) en el portafolio riesgoso $P$ (6)
+
+En la siguiente tabla se calcula el nivel de inversión deseado en el portafolio riesgoso $P$ para un grado de aversión de 1,2,3,4,5,6,7 y 8 (de menor a mayor aversión al riesgo):
+
+```{r}
+# Niveles de inversión óptimos:
+Aversion=1:8
+optimalRisky=(rendimientoPortafolio-mean(rendimientos$CETES28D))/(Aversion*riesgoPortafolio^2)
+
+nivelesInversionOptimos=data.frame(Aversion)
+nivelesInversionOptimos$Perfil=c("Agresivo","Agresivo","Agresivo","Moderado","Moderado","Moderado","Conservador","Conservador")
+nivelesInversionOptimos$NivelInversionP=paste0(round(optimalRisky*100,2),"%")
+
+nivelesInversionOptimos$NivelInversionRF=paste0(round(100-(rendimientoPortafolio-mean(rendimientos$CETES28D))/(nivelesInversionOptimos$Aversion*riesgoPortafolio^2)*100,2),"%")
+
+datatable(nivelesInversionOptimos,rownames=FALSE,colnames=c("Grado de aversión al riesgo"="Aversion","Perfil de inversionista"="Perfil","Nivel de inversión óptimo en portafolio riesgoso"="NivelInversionP","Nivel de inversión óptimo en activo libre de riesgo"="NivelInversionRF"))
+```
+## Paso 2.5 del proceso de inversión: El nivel de inversión deseado ($\omega^*_i$) en el portafolio riesgoso $P$ (7)
+
+Con esta selección óptima de niveles de inversión en cada valor se tiene el siguiente portafolio, según el grado de aversión al riesgo:
+
+```{r}
+# Niveles de inversión óptimos:
+nivelesInversionOptimos2=data.frame(Aversion)
+nivelesInversionOptimos2$Perfil=c("Agresivo","Agresivo","Agresivo","Moderado","Moderado","Moderado","Conservador","Conservador")
+nivelesInversionOptimos2$CETES28D=c(nivelesInversionOptimos$NivelInversionRF)
+nivelesInversionOptimos2$BonosM=paste0(round(optimalRisky*wi[1]*100,2),"%")
+nivelesInversionOptimos2$bonosCorporativos=paste0(round(optimalRisky*wi[2]*100,2),"%")
+nivelesInversionOptimos2$IPC=paste0(round(optimalRisky*wi[3]*100,2),"%")
+nivelesInversionOptimos2$DowJones=paste0(round(optimalRisky*wi[4]*100,2),"%")
+
+datatable(nivelesInversionOptimos2,rownames=FALSE,colnames=c("Grado de aversión al riesgo"="Aversion","Perfil de inversionista"="Perfil","CETES28D"="CETES28D","Bonos M"="BonosM","Bonos corporativos"="bonosCorporativos","IPC"="IPC","Dow Jones"="DowJones"))
+```
+
+## Paso 2.5 del proceso de inversión: El nivel de inversión deseado ($\omega^*_i$) en el portafolio riesgoso $P$ (8)
+
+Con estos niveles de inversión seleccionados por la o el inversionista, se procede al paso 3 del proceso de administación de inversiones: **ejecutar la política de inversión o administración de portafolios**.
+
+## Paso 3 del proceso de inversión: Ejecutar la política de inversión o administración de portafolios 
+
+Ya que se tiene delimitado el nivel de inversión en cada tipo de valor, se debe proceder a la ejecución de la política de inversión. Esto implica adquirir los valores de interés en los niveles de inversión deseados. Antes de adquirirlos, se debe determinar el tipo de administración de inversiones que se desea realizar:
+
+1. **Administración de inversiones pasiva**: Con esta se busca replicar el comportamiento de un índice de referencia o *benchmark* $M$. En este caso, se busca replicar los niveles de inversión $\omega_i$ en cada valor que forma parte de dicho índice o, en su defecto, se calcula el desempeño histórico del índice y se mantienen fijos los niveles de inversión de la política de inversión.
+2. **Administración de inversiones activa**: Con esta se busca superar el desempeño del índice de referencia o *benchmark* $M$. En este caso, se busca tener diferentes niveles de inversión $\omega_i$, a los establecidos en la polítoca de inversión o benchmark. 
+
+Una vez realizada la ejecución de la política de inversión pasiva o activa, se procede al paso 4 del proceso de administración de inversiones: **medir y evaluar el resultado de la estrategia**.
+
+## Paso 4 del proceso de inversión: Medir y evaluar el resultado de la estrategia
+
+Para poder realizar este paso se debe tener definido un índice de referencia o benchmkar que sira para comparar el desempeño de la administración del portafolio, en comparación a los niveles de inversión establecidos en la política de inversión previamente definida.
+
+Si la ejecución de la política de inversión lleva a resultados iguales a los del benchmark (administración pasiva) o mejores que el mismo (administración activa), se tiene evidencia de que la polítia de inversión y la administración de la inversión es buena y debe seguir su rumbo.
+
+Complementario a lo anterior, debe verificarse que las necesidades de rendimiento esprado y niveles de exposición al riesgo se cumplan a satisfacción.
+
+Si no se cumple tener un desempeño lo más similar al benchmark (el desempeño puede ser menor al benchmark pero no debe ser mucha la diferencia, salvo por los costos de adminsitración), se debe contemplar la posibilidad de regresar al paso 3 del proceso de inversiones para replantear la compra de valores que permita lograr el desempeño de la política de inversión.
+
+Si no se cumplen los objetivos de rendimiento y exposición al riesgo o la o el inversionista no se encuentran satisfechos con el resultado, deberá entonces plantearse la posibilidad de regresar al paso 1 del proceso de inversiones para replantear los objetivos y la propia política de inversión.
+
+Es por ello, que el proceso de administración de inversiones es cíclico.
