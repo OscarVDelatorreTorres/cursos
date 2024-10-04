@@ -1,0 +1,174 @@
+---
+title: "Valor en Riesgo (VaR)"
+author: "Dr. Oscar V. De la Torre Torres"
+title-slide-attributes:
+  data-background-size: contain
+  data-background-opacity: "0.5"
+format: 
+  revealjs:
+    controls-tutorial: true
+    transition: fade
+    scrollable: true  
+    footer: "Proceso de administración de inversiones"
+    slide-number: true
+    preview-links: true
+    progress: true
+    history: true   
+    chalkboard: true
+    smaller: true
+    logo: umsnh.png
+bibliography: biblio.bib
+bibliographystyle: cyaunames.csl
+lang: es-ES
+---
+
+```{r setup, include=FALSE}
+library(dplyr)
+library(tidyverse)
+library(plotly)
+library(openxlsx)
+library(DT)
+library(stargazer)
+library(reticulate)
+library(DescTools)
+library(MASS)
+library(data.table)
+library(reticulate)
+library(tidyquant)
+
+# Tablas de datos de entrada:
+
+# Se extrae la tabla histórica de datos de NAFTRACISHRS.MX:
+#datosPL <- read.csv("https://raw.githubusercontent.com/OscarVDelatorreTorres/riskManagementSuiteR/main/PLDiario.csv")
+datosR <- read.csv("renContDiario.csv")
+```
+
+## Introducción al cálculo del valor en riesgo o VaR
+
+En este tema se revisará el cálculo del valor en riesgo (VeR), también conocido como *Value at Risk* (VaR). Para fines de exposición, se entenderá al mismo como **La pérdida potencial que se puede tener, en un horizonte de tiempo, con un nivel de probabilidad dado**. [@DeLara2012].
+
+Como se verá, el VaR no es más que estimar un cuantil ($x_i=\alpha$) para un valor dado de probabilidad acumulada ($=(xi\leq\alpha)$). Esto llevará a que el VaR puede estimarse con 2 métodos:
+
+:::{.fragment .fade}
+- VaR no paramétrico o histórico
+:::
+:::{.fragment .fade}
+- VaR paramétrico
+:::
+
+Como se revisará, esta medida está sujeta a varias consideraciones:
+
+
+:::{.fragment .fade}
+1. Depende del horizonte de tiempo para su cálculo. 
+:::
+:::{.fragment .fade}
+2. Depende de la confianza o probabilidad de suceso del cálculo.
+:::
+:::{.fragment .fade}
+3. Depende del método de cálculo que puede ser paramétrico o no paramétrico, según la política de administración de riesgos de la empresa o institución financiera, así como de la normatividad que le aplique en la materia.
+:::
+
+## Métodos sugeridos para el cálculo del VaR
+
+Siguiendo múltiples referencias reconocidas de la cuantificación y administración de riesgos como son Alexander [-@Alexander2008n], De Lara Aro [-@DeLara2012], Dowd [-@Dowd2005], o Jorion [-@Jorion2007], cada tipo de empresa, institución financiera tiene sus propias metodologías de cuantificación y adminsitración de riesgos, siguiendo 3 objetivos principales:
+
+:::{.fragment .fade}
+1. Determinar la pérdida potencial en una línea de negocio como puede ser sus operaciones, créditos, factores de mercado (inversiones en tipos de valores) en inversiones, o incluso líneas de productos (empresas y corporativos) para cubrirlos con algún tipo de seguro o instrumento financiero derivado.
+:::
+:::{.fragment .fade}
+2. Determinar los citados tipos de pérdidas y afines para hacer provisiones de capitalización (reservas) que permitan hacer frente a las mismas.
+:::
+:::{.fragment .fade}
+3. Determinar los citados tipos de pérdidas y afines para complementar la evaluación que hace una empresa de la calidad crediticia de la empresa o institución financiera.
+:::
+
+## VaR no paramétrico (1): Cálculo para posiciones individuales
+
+El término **no paramétrico** se refiere a que en el modelo de cálculo no se ocupan **coeficientes** o parámetros o funciones de probabilidad para su cálculo.
+
+El VaR, como se mencionó al inicio, es un cuantil de una distribución de probabilidad. En este caso, el cuantil de una probabilidad acumulada de izquierda a derecha ($p(a\leq x_i)$). Para el caso no paramétrico, se asume el método de histogramas para definir la clase o valor de $x_i$ ($P/L_{i,t}$ o $r_{i,t}$) que cumple con tal probabilidad que es equivalente a $p(x_i\leq a)$. 
+
+Suponga que se tiene el histórico de 250 días (del 08 de septiembre del 2023 al 09 de septiembre del 2024) de una inversión en el índice IPC (en un fondo indizado) y se desea calcular el VaR al 95\% de confianza (cuantil para $P(a\leq x_i)=95\%$ o $P(x_i\leq a)=5\%$). Esto para una posición de 100 acciones en el fondo o ETF. Los datos se presentan a continuación:
+
+```{r VaRNoparamétricoRb}
+
+# Se calcula el VaR al 95% de confianza de forma no paramétrica:
+VaRr=quantile(datosR$NAFTRACISHRS.MX,0.05,na.rm=TRUE)
+
+dataOut1=data.frame(Fecha=datosR$Date,rendimiento=datosR$NAFTRACISHRS.MX)
+
+datatable(dataOut1,colnames=c("Fecha"="Fecha","Variación porcentual"="rendimiento"))
+```
+
+Con estos datos se tiene que el VaR al 95\% de confianza de un día a otro sería: `r VaRr`\%.
+
+Se tiene la siguiente gráfica de histograma de los datos de la tabla anterior para ilustrar el cálculo de VAR con $r_{i,t}$.
+
+```{r histograma1R}
+library(plotly)
+
+plot_ly()%>%add_trace(x=~NAFTRACISHRS.MX,data=datosR,alpha=0.4,
+                      type="histogram",nbins=100,
+                      marker = list(color = "darkgray",
+                            line = list(color = "black",
+                                        width = 1)),name="Frecuencia de valores de rendimientos de NAFTRAC"
+)%>%add_segments(x = VaRr, xend = VaRr, y = 0, yend = 130,name="VaR",text="VaR")
+
+
+```
+
+
+
+## VaR paramétrico
+
+El VaR paramétrico no es más que una estimación de intervalo inferior (o de cola inferior) de los posibles rendimientos de una inversión en un horizonte de tiempo $n$ a futuro. Para ello, se asume que los rendimientos de la inversión siguen una distribución normal. Esto, de nuevo, no es más que estimar un cuantil pero empleando tablas de probabilidad normal como las dscritas en la mayoría de los libros de Estadística.
+
+El cálculo del VaR con el método para métrico es el siguiente:
+
+$$VAR_{t+n}=M\cdot \left[ (z_a\cdot s_{r_{i,t}})\cdot \sqrt{n} \right]\text{ }(4)$$
+En la expresión anterior $M$ es el monto invertido en la posición, $s_{r_{i,t}}$ es la desviación estándar muestral de los rendimientos $r_{i,t}$ observados en dicho valor, $Z_a$ es el valor Z en tablas (de una función de probabilidad normal estándar como las que hay en los libros de Estadística) de la probabilidad acumulada de 5\% (lo contrario al 95\% de confianza con el que se calcula el VaR) y $n$ es el horizonte de tiempo a futuro para el cálculo del VaR.
+
+Para el ejemplo del NAFTRAC, supóngase que se tienen \$ 50,000.00 invertidos en el dicho valor y que se desea calcular el VaR al 95\% de confianza para un horizonte de tiempo de 5 días. 
+
+```{r}
+Monto=50000
+n=5
+
+# Se calcula el valor Za para un nivel de 5% de probabilidad acumulada (cola inferior):
+valorZa=qnorm(0.05,mean=0,sd=1)
+
+VaRNAFTRAC=Monto*((valorZa*sd(datosR$NAFTRACISHRS.MX)*sqrt(n))/100)
+
+```
+
+Con los datos del NAFTRAC vistos en el cálculo del VaR no paramétrico se tiene que el VaR estimado es de \$`r VaRNAFTRAC`.
+
+La gráfica del mismo (con una función de probabilidad gaussiana) es:
+
+```{r}
+# Se grafica la función de probabilidad gaussiana estándar con valores den X de los rendimientos del NAFTRACIshares:
+  xi=sort(datosR$NAFTRACISHRS.MX)
+  zi=(xi-mean(xi))/sd(xi)
+  xiMonto=xi*Monto
+# VaR:
+
+VaRNAFTRAC=((valorZa*sd(datosR$NAFTRACISHRS.MX)*sqrt(n))/100)
+    
+# Tabla de gráfica:  
+datosGRaficaVaR=data.frame(
+  xi=xi,
+  zi=zi,
+  pi=dnorm(zi,mean=0,sd=1)
+)
+
+plot_ly()%>%add_trace(x=~xi,y=~pi,data=datosGRaficaVaR,type="scatter",mode="lines",line=list(color="blue"),name="Distribución normal estándar")%>%add_segments(x = valorZa, xend = valorZa, y = 0, yend = 0.4,name="VaR Gaussiano",text="VaR Gausiano")%>%layout(
+    xaxis = list(
+      ticktext = as.list(xiMonto)
+      )
+    )
+```
+
+
+
+## Referencias citadas

@@ -401,3 +401,17 @@ Si no se cumple tener un desempeño lo más similar al benchmark (el desempeño 
 Si no se cumplen los objetivos de rendimiento y exposición al riesgo o la o el inversionista no se encuentran satisfechos con el resultado, deberá entonces plantearse la posibilidad de regresar al paso 1 del proceso de inversiones para replantear los objetivos y la propia política de inversión.
 
 Es por ello, que el proceso de administración de inversiones es cíclico.
+
+## Consideraciones finales en tema de riesgos
+
+Como se puede apreciar, la aproximación cuantitativa del riesgo se da por la desviación estándar $\sigma_{r_i}$. Esta, en términos simples es la diferenca promedio que podría tener el valor del rendimiento $r_i$ respecto a su promedio o valor esperado $E_r$.
+
+Este concepto nos puede llevar incluso a revisar un aspecto importante en la administración de inversiones, de instituciones financieras e incluso de empresas: **el valor en riesgo** o pérdida potencial en la que, con un $p\%$ de probabilidad, puede tener la empresa en $n$ periodos futuros.
+
+Por ejemplo, un banco puede estimar que, con un 95% de probabilidad, podría perder \$1,000,000 de pesos en 1 semana como resultado de todos los errores de cajeros. Un fondo de inversiones o una AFORE podría estimar perder ese mismo monto con esa misma probabilidad de suceso en las inversiones que tiene en el portafolio que administra.
+
+De manera análoga, una empresa puede estimar las pérdidas que en sus inverisones o en sus operaciones del día a día puede tener.
+
+¿Para qué es necesario saber esto? para que la empresa, banco o inversionista pueda eliminar la fuente de riesgo (si la pérdida potencial es muy alta), cubrirla con un seguro o cobertura financiera (un instrumento financiero derivado) o asumir el riesgo reservando dinero en su capital para cubrir la pérdida en caso de necesitar liquidez para pagarla.
+
+En el [tema de riesgos]() se revisará brevemente este cálculo.
