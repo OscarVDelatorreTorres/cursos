@@ -7,15 +7,15 @@ header_includes:
 - \usepackage{mathtools}
 author: "Dr. Oscar V. De la Torre Torres"
 output: 
+  bookdown::pdf_document2:
+    toc: yes
+    number_sections: yes    
   bookdown::html_document2:
     toc: yes
     toc_depth: 5
     toc_float: yes
     number_sections: yes
     theme: cerulean    
-  bookdown::pdf_document2:
-    toc: yes
-    number_sections: yes    
   html_document:
     toc: yes
     toc_depth: 5
@@ -121,7 +121,7 @@ En este tema final se aprende cómo elaborar apuntes, notas en línea y exámene
 
 # Material de trabajo necesario, horario y consideraciones generales
 
-El horario planeado para el curso es del lunes 11 al viernes 15 de diciembre de 2023, en horario de 8:00 a 10:00 horas. El formato de enseñanza será virtual por medio de [Microsoft Teams del curso](https://teams.microsoft.com/l/channel/19%3aCX1b7Fr-umdqtTIyt6NyGIXJ6ylF17ui0ta5yh8qMoQ1%40thread.tacv2/General?groupId=04e17f29-e8f1-478f-9467-8d8a45739c02&tenantId=9daedba0-bfb6-497b-b5b2-033489a731f2).
+El horario planeado para el curso es del lunes 4 al viernes 15 de diciembre de 2023, en horario de 8:00 a 10:00 horas. El formato de enseñanza será virtual por medio de [Microsoft Teams del curso](https://teams.microsoft.com/l/channel/19%3aCX1b7Fr-umdqtTIyt6NyGIXJ6ylF17ui0ta5yh8qMoQ1%40thread.tacv2/General?groupId=04e17f29-e8f1-478f-9467-8d8a45739c02&tenantId=9daedba0-bfb6-497b-b5b2-033489a731f2).
 
 Las herramientas necesarias para cursar y acreditar el curso son:
 

@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.3)  23 JAN 2024 10:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.3)  23 JAN 2024 11:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**index.tex
-(./index.tex
+**indexEstudiantes.tex
+(./indexEstudiantes.tex
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-06-30>
 (/Users/oscardelatorretorres/Library/TinyTeX/texmf-dist/tex/latex/base/article.cls
@@ -494,12 +494,12 @@ File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 File: l3backend-pdftex.def 2023-04-19 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count314
 \l__pdf_internal_box=\box110
-) (./index.aux
+) (./indexEstudiantes.aux
 
 LaTeX Warning: Label `tab:temarioT' multiply defined.
 
 )
-\openout1 = `index.aux'.
+\openout1 = `indexEstudiantes.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 109.
 LaTeX Font Info:    ... okay on input line 109.
@@ -560,9 +560,9 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package hyperref Info: Link coloring ON on input line 109.
-(./index.out) (./index.out)
+(./indexEstudiantes.out) (./indexEstudiantes.out)
 \@outlinefile=\write3
-\openout3 = `index.out'.
+\openout3 = `indexEstudiantes.out'.
 
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 111.
 (/Users/oscardelatorretorres/Library/TinyTeX/texmf-dist/tex/latex/lm/ot1lmr.fd
@@ -593,7 +593,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 LaTeX Font Info:    Trying to load font information for U+msb on input line 111.
 (/Users/oscardelatorretorres/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (./index.toc
+) (./indexEstudiantes.toc
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10> on input line 5.
 LaTeX Font Info:    External font `lmex10' loaded for size
@@ -602,7 +602,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 5.
 )
 \tf@toc=\write4
-\openout4 = `index.toc'.
+\openout4 = `indexEstudiantes.toc'.
 
 <LogoFCCA.png, id=74, 225.84375pt x 225.84375pt>
 File: LogoFCCA.png Graphic file (type png)
@@ -628,7 +628,7 @@ Underfull \hbox (badness 2608) in paragraph at lines 270--270
 []\T1/lmr/bx/n/14.4 Material de trabajo necesario, horario y consideraciones
  []
 
-[4] [5] (./index.aux)
+[4] [5] (./indexEstudiantes.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-06-30>
@@ -636,19 +636,19 @@ L3 programming layer <2023-06-30>
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package rerunfilecheck Info: File `index.out' has not changed.
+Package rerunfilecheck Info: File `indexEstudiantes.out' has not changed.
 (rerunfilecheck)             Checksum: B8E6D233BFB012C228AC7FF0EC2B7E96;4673.
  ) 
 Here is how much of TeX's memory you used:
- 13272 strings out of 477197
- 210781 string characters out of 5811866
+ 13273 strings out of 477197
+ 211050 string characters out of 5811866
  1931244 words of memory out of 5000000
  33990 multiletter control sequences out of 15000+600000
  612063 words of font info for 79 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,7n,79p,1224b,562s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,7n,79p,1235b,562s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </Users/oscardelatorretorres/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></Users/oscardelatorretorres/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></Users/oscardelatorretorres/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb></Users/oscardelatorretorres/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb></Users/oscardelatorretorres/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr17.pfb></Users/oscardelatorretorres/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb></Users/oscardelatorretorres/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on index.pdf (5 pages, 208816 bytes).
+Output written on indexEstudiantes.pdf (5 pages, 209088 bytes).
 PDF statistics:
  185 PDF objects out of 1000 (max. 8388607)
  159 compressed objects within 2 object streams
