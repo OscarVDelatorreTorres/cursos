@@ -1,0 +1,63 @@
+---
+title: Curso de diseño y publicación de documentos web, notas interactivas y resultados
+  de investigación empleando Rstudio y GitHub (2024)
+author: "Dr. Oscar V. De la Torre Torres"
+date: "2023-12-04"
+output:
+  slidy_presentation: default
+  ioslides_presentation: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(stargazer)
+library(plotly)
+library(Quandl)
+library(siebanxicor)
+library(stargazer)
+library(flextable)
+library(officer)
+```
+
+# Qué es R y Rstudio
+
+R es un lenguaje de programación de **segundo nivel** y es uno de los más utilizados, junto con Python, en el quehacer académico, informático y científico.
+
+R es un lenguaje similar a lenguajes previos como son MATLAB (Octave), Python o S. El mismo surge como una alternativa de fuente abierta al lenguaje de programación S desarrollado por uno de sus credores mientras trabajaba en los laboratorios Bell. Posteriormente, se desarrolló el lenguaje en la Universidad de Auckland, Nueva Zelanda por Ross Ihaka, Robert Gentleman y John Chambers (el creador de S). Derivado de esto, R se ha convertido en un referente y, junto con Python es el lenguaje de programación técnica más utilizado en la ciencia y la práctica profesional.
+
+Gracias a la flexibilidad para crear programas, existe una pléyade de paqueterías o librerías que contienen funciones o programas, mismos que pueden llamarse al ambiente de trabajo y ejecutarse por medio de sintaxis o líneas de comandos.
+
+# Para qué puede ser útil
+
+1. Correr análisis estadísticos, de ciencia de datos (inteligencia artificial), análisis cuantitativos con código de fuente abierta.
+2. Tener documentos especiales en donde mis corridas y análisis los tenga en un mismo archivo y se corran de manera automática una vez programados.
+3. Poder automatizar tareas repetitivas de cálculos, análisis, procesos de trabajo o descarga de datos.
+4. Poder elaborar notas en línea ya sean estáticas o con aplicaciones interactivas. Esto apra impartir clases, cursos o transmitir ideas.
+5. Poder realizar, gratuitamente, muchos análisis que con otro software nos costaría pagar licencias.
+
+# Rstudio, R, Python y Shiny
+
+El motor de programación R original es muy robusto pero muy limitado en su interfaz. Rstudio es una interfaz de usuario más amigable y visual que permite generar todo tipo de documentos y aplicaciones.
+
+En Rstudio pueden correrse incluso otros lenguajes como Python, octave, MATLAB, Julia, JSon y otros.
+
+
+[Shiny](https://shinyapps.io) es un servidor que tiene licencias gratuitas para poder publicar aplicaciones o sitios web interactivos compiladas en Rstudio.
+
+[Rstudio cloud](https://posit.cloud) es un servicio en donde se puede instalar y utilizar Rstudio y R (así como python y Jupyter notebooks) de manera rápida y accesible desde cualquier navegador de internet.
+
+Python es un lenguaje de programación muy popular que podemos instalar fácilmente con el compilador [anaconda Python](https://www.anaconda.com/products/distribution) o instalarlo fácilmente (como Rstudio o Posit cloud) en la nube por medio de [Anaconda cloud](https://anaconda.cloud/).
+
+Una de las ventajas de utilizar Rstudio es que también puede instalarse Python y programar en dicho lenguaje con la librería *reticulate*. Esto nos permitirá correr fragmentos de código de R o Python en la misma página web o presentación que hagamos.
+
+# GitHub ¿qué es?
+
+Es quizá el repositorio de códigos, resultados de investigación, software e intercambio de datos más grande. En el mismo podremos publicar múltiples archivos o códigos de Python. 
+
+En este repositorio aprenderemos cómo, una vez realizado nuestro archivo de página web o nuestra presentación, podemos publicarlos gratuitamente en línea. También podremos compartirlos con otros usuarios y colaborar en proyectos de investigación.
+
+Adicionalmente, podemos asignarle gratuitamente un Digital Object Identifier (DOI) por medio de Zenodo.
+
+La liga del mismo es la siguiente.
+
+[GitHub](https://github.com)

@@ -1,0 +1,204 @@
+---
+title: Introducción a los archivos Rmarkdow, publicación de páginas web y a la programación en R y python 
+author: "Dr. Oscar V. De la Torre Torres"
+date: "2023-12-04"
+output:
+  slidy_presentation: default
+  ioslides_presentation: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(stargazer)
+library(plotly)
+library(Quandl)
+library(siebanxicor)
+library(stargazer)
+library(flextable)
+library(officer)
+library(reticulate)
+```
+
+# Introducción
+
+R y Python son los lenguajes líderes de programación para actividades profesionales o de investigación.
+
+Se utilizan en (de entre varios):
+
+- Academia
+- Empresas e instituciones como NASA, el CERN y principales centros de investigación
+
+Sirven de apoyo para grandes y múltiples aplicaciones, como:
+
+- IA
+- Análisis Econométrico
+- Análisis Estadístico avanzado
+- Publicación de datos y resultados en línea 
+
+Todo de manera gratuita y sencilla.
+
+R y Ptyhon se apoyan en libreríar (R) o paquetes (Python) que nos permiten realizar cálculos y análisis de manera sencilla y eficiente. Estos fueron programados por terceras personas (nostor también podemos desarrollar los propios y publicarlos), lo que ha permitido que la comunidad de usuarios crezca y se fortalezca y que la Academia y el desarrollo de la ciencia avance de manera exponencial.
+
+chat-GPT, Google y Gemini se han programado en Python. Muchas librerías de métodos econométricos y estadísticos avanzados se han programado en R. Esto antes de que esten disponibles, de manera comercial, en software como Stata, Eviews, SPSS, SAS, entre otros.
+
+## Archivos R script y Rstudio (Posit)
+
+Los archivos R script son archivos tipo *.txt en donde guardamos las instrucciones y funciones que queremos ejecutar en R. Ahí los guardamos para poder ejecutarlos en cualquier momento.
+
+Nos sirven para guardar los pasos de nuestros cálculos y análisis, y para poder compartirlos con otros usuarios.
+
+Tambén es útil en nuestra investigación para repetir los pasos y cálculos programados en el futuro.
+
+# Instalación de Rstudio (posit) y posit cloud
+
+Para instalar Posit en Windows, macOS o Linux, es necesario descargar el archivo de instalación desde la URL [Rstudio](https://rstudio.com/products/rstudio/download/).
+
+Ahí se dan las instrucciones para instalar R y Rstudio
+
+## Instalación de paquetes en R
+
+Para instalar paquetes en R, es necesario utilizar la función install.packages("nombre_del_paquete") y luego cargarlo con la función library(nombre_del_paquete).
+
+## Creación de cuenta en posit cloud
+
+Para crear una cuenta en posit cloud, es necesario ir a la URL [posit cloud](https://posit.cloud) y seguir las instrucciones.
+
+
+# Programación en R
+
+Los tipos de objeto más comunies con los que nos toparemos son:
+
+- Double: tipo numérico
+- Integer: tipo entero
+- Character: tipo texto
+- vector: tipo lista
+- Logical: tipo lógico
+- Factor: tipo categórico
+- Date: tipo fecha
+- data.frame: tipo tabla
+
+## Ejemplo de un objeto tipo double
+
+```{r include=TRUE}
+# Generamos un objeto llamado a que contiene el número 5
+a=5
+# imprime el objeto a
+a
+```
+
+## Ejemplo de un objeto tipo character
+
+```{r}
+# Generamos un objeto llamado b que contiene el texto "Hola Mundo"  
+b="Hola Mundo"
+# imprime el objeto b
+b
+
+```
+
+## Ejemplo de un objeto tipo vector
+
+```{r}
+# Generamos un objeto llamado c que contiene una lista de números
+c=c(1,2,3,4,5)
+# imprime el objeto c
+c
+
+```
+
+## Ejemplo de un objeto tipo data.frame
+
+```{r}
+# Generamos un objeto llamado d que contiene una tabla de datos
+d=data.frame(a=c(1,2,3,4,5),b=c(6,7,8,9,10))
+# imprime el objeto d
+d
+
+```
+
+## Ejemplo de un objeto tipo factor
+
+```{r}
+# Generamos un objeto llamado e que contiene una lista de categorías
+e=factor(c("A","B","C","D","E"))
+# imprime el objeto e
+e
+
+```
+
+## Ejemplo de un objeto tipo date
+
+```{r}
+# Generamos un objeto llamado f que contiene una fecha
+f=as.Date("2023-12-04")
+# imprime el objeto f
+f
+
+```
+
+# Archivos Rmarkdown en Rstudio (posit o posit cloud)
+
+Al igual que los archivos Rmarkdown son archivos tipo *.Rmd en donde guardamos las instrucciones y funciones que queremos ejecutar en R. La principal diferencia es que podemos generar documentos con formato HTML, PDF, Word, entre otros.
+
+Esto nos permite generar documentos con formato profesional y con gráficos interactivos e incluso publicarlos en repositorios en línea como GitHub (entre varios).
+
+Ligas de interés
+
+- [Rmarkdown](https://rmarkdown.rstudio.com/)
+- [posit cloud](https://posit.cloud)
+- [GitHub](https://github.com)
+
+# Conversión de objetos en R
+
+Se pueden convertir algunos objetos de un tipo a otro.
+
+## Conversión de numérico a character:
+
+`as.character(5)`
+
+```{r}
+as.character(5)
+```
+
+## Conversión de character a numérico:
+
+`as.numeric("5")`
+
+```{r}
+as.numeric("5")
+
+```
+
+## Verificando el tipo de objeto
+
+`class(5)`
+
+```{r}
+class(5)
+```
+
+`class("5")`
+
+```{r}
+class("5")
+```
+
+# Visualización de objetos en el workspace
+
+`tabla=data.frame(a=(1,2),b=c("A","B"))`
+`View(a)`
+
+```{r, eval=FALSE}
+tabla=data.frame(a=c(1,2),b=c("A","B"))
+View(tabla)
+```
+
+# Sesión de instalación de GitHub Desktop
+
+- Será necesario crear una cuenta en GitHub [GitHub](https://github.com).
+- Será necesario instalar GitHub Desktop para poder subir nuestros archivos Rmarkdown a GitHub. Esto en la URL [GitHub Desktop](https://desktop.github.com/).
+- Se utilizará el "clonado" de de repositorios en Rstudio cloud, una vez que se haya creado una cuenta y un respositorio en GitHub y se haya instalado GitHub Desktop. 
+
+# Programación en Python
+
+En desarrollo...

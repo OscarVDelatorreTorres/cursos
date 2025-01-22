@@ -1,0 +1,149 @@
+---
+title: Curso de diseño y publicación de documentos web, notas interactivas y resultados
+  de investigación empleando Rstudio y GitHub (2024)
+author: "Dr. Oscar V. De la Torre Torres"
+header_includes:
+- \usepackage{amsmath}
+- \usepackage{amssymb}
+- \usepackage{amsthm}
+- \usepackage{mathtools}
+output:
+  html_document:
+    toc: true
+    toc_depth: 5
+    toc_float: true
+  bookdown::pdf_document2:
+    toc: true
+    number_sections: true
+  bookdown::html_document2:
+    toc: true
+    toc_depth: 5
+    toc_float: true
+    number_sections: true
+    theme: cerulean
+  word_document:
+    toc: true
+    toc_depth: '5'
+  pdf_document:
+    toc: true
+    toc_depth: '5'
+link-citations: true
+citecolor: blue
+linkcolor: blue
+urlcolor: blue
+font: times new roman
+lang: "Es-Es"
+---
+
+```{r setup, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
+library(stargazer)
+library(plotly)
+library(Quandl)
+library(siebanxicor)
+library(stargazer)
+library(flextable)
+library(officer)
+library(openxlsx)
+```
+
+```{r, echo=FALSE, out.width="15%", fig.align="center"}
+knitr::include_graphics("LogoFCCA.png")
+```
+
+# Fechas propuestas y duración del curso
+
+- **Fechas:** Del 1 al 12 de julio del 2024 de 10:00 a 12:00 (en plataforma Moodle: )    .
+- **Duración:** 40 horas, impartidas en 10 días de sesiones de 4 horas (2 horas teóricas y 2 horas prácticas).
+
+# Presentación
+
+
+
+El presente curso está orientado a profesores y personal Académico que desee conocer, de manera introductoria, las siguientes herramientas o habilidades:
+
+1. Publicar sitios web para notas en línea de manera rápida y sencilla. Esto con la ayuda de Rstudio.
+2. Emplear GitHub como medio de publicación de sitios web.
+3. Conocer fundamentos del lenguaje de programación R para descargar información de fuentes como archivos de Excel, INEGI, Banco de México o el observatorio de inteligencia de mercado que está desarrollando la FCCA de la UMSNH.
+4. Elaborar documentos técnicos o publicación de avances y resultados de investigación en GitHub como material suplementario en línea para resultados de investigación.
+5. Conocer los avances del observatorio en materia de precios y algunas bases de datos agrícolas.
+6. Elaborar aplicaciones interactivas con Shiny apps y publicarlas en el servidor de posit.
+
+El objetivo del presente curso tiene un énfasis en los usos 1 a 4, observando que los objetivos 5 y 6 van implícitos en la revisión del curso. Dada la temporalidad y naturaleza introductoria del mismo, la programación y tipos de documentos serán *"básicos"* pero suficientes para que la o el sustentante puedan desarrollar notas en línea, asi como archivos de análisis personal.
+
+# Temario
+
+Dado lo anterior, el temario a cubrir será el siguiente:
+
+```{r temarioT, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE}
+
+temario=read.xlsx("programaEstudios.xlsx")
+  
+tabla1=flextable(temario)
+
+tabla1=set_header_labels(tabla1,
+                         `Día`="Día",
+                         Tema="Tema a revisar",
+                         `Horas.clase`="Horas de clase por sesión",
+                         `Horas.prácticas`="Horas prácticas")
+tabla1 <- set_caption(tabla1, "Temario a cubrir en el curso", 
+  autonum = run_autonum(seq_id = "temarioT"))
+tabla1=width(tabla1,width=4,unit="cm")
+tabla1
+```
+
+**El curso tiene un total de 40 horas (20 teóricas y 20 prácticas).**
+
+## Descripción temática
+
+De la tabla del temario se pueden apreciar los 5 temas que se detallan a continuación:
+
+## Instalación e introducción a programación básica en R: archivos Rmarkdown{#tema1} 
+
+En este tema se tendrá una primera sesión informativa para crear una cuenta de Rstudio en [Posit cloud](https://login.posit.cloud/register?redirect=%2Foauth%2Fauthorize%3Fredirect_uri%3Dhttps%253A%252F%252Frstudio.cloud%252Flogin%26client_id%3Drstudio-cloud%26response_type%3Dcode%26show_auth%3D0%26show_login%3D0%26show_setup%3D0), así como para dar instrucciones generales para la instalación de `R` y `Rstudio` en su computadora (lo ideal para trabajar de manera personal). Esto conforme se establece en las [notas introductorias del curso](https://www.rpubs.com/odelatorre/CursoR). En esta primera sesión se aprenderá a crear objetos básicos como tipo caracter, número, tabla de datos o lista, así como la generación se archivos de `Rmarkdown` (bookdown para ser más específicos) en donde se compilarán documentos y se insertarán pedazos de código de programación en `R`.
+
+## Publicación de páginas web y publicación en GitHub{#tema2} 
+
+En este tema se aprenderá a compilar páginas web y dashboards que serán publicados en un repositorio de [GitHub](https://github.com) y publicados como páginas web estáticas. Para esto, se explicará brevemente en qué consiste GitHub, así como su uso para publicar sitios web estáticos de manera rápida. Se explicará cómo trabajar con GitHub desktop y publicar rápidamente una página que se puede actualizar de manera periódica y simple.
+
+## Extracción de datos de fuentes externas: INEGI, Banxico, Archivos de excel, observatorio de inteligencia de mercado FCCA{#tema3}
+
+En este tema se aprenderá a conectarse a las multiples bases de datos externas que ofrecen acceso a `R` como son el Banco de México, INEGI o Yahoo Finance con las funciones desarrolladas por el Dr. De la Torre, así como el repositorio de precios que se está desarrollando para el futuro observatorio de inteligencia de mercado. Se aprenderá cómo generar el token de las apis de estos 2 ejemplos, así como un ejemplo de extracción de código de datos de INEGI.
+Con los datos procesados, se aprenderá a graficar con la librería `plotly`. Se cerrará el tema viendo cómo exportar estas gráficas a archivos \*.jpeg.
+
+## Tablas de resumen, tablas de análisis y gráficas interactivas{#tema4}
+
+En este tema se utilizarán librerías como plotly, flexdashboard, openxlsx o stargazer para hacer resúmenes de datos (estadísticos) y se verán varias opciones de graficar datos interactivos de línea, pie, diagramas de caja, área y otros que poueden utilizarse.
+
+## Elaboración de sitios web interactivos y dashboards{#tema5}
+
+Se hará una breve revisión de cómo generar aplicaciones, páginas web o dashboards con interactivos para, posteriormente, ser publicados en linea en los servidores de Shiny apps. Para esto, se abrirá una cuenta de uso gratuiso en los [servidores de Shiny](https://www.shinyapps.io/)
+
+# Material de trabajo necesario, horario y consideraciones generales
+
+El horario planeado para el curso es del lunes 4 al viernes 15 de diciembre de 2023, en horario de 8:00 a 10:00 horas. El formato de enseñanza será virtual por medio de la [plataforma Moodle del Dr. Oscar De la Torre Torres](https://moodle1.cursosdelatorreybollain.com/: [Liga de la plataforma](https://moodle1.cursosdelatorreybollain.com/)
+
+Las herramientas necesarias para cursar y acreditar el curso son:
+
+- Computadora (PC o mac) con conexión a internet estable.
+- Cuenta de posit cloud abierta en [posit cloud](https://login.rstudio.cloud/register?redirect=%2Foauth%2Fauthorize%3Fredirect_uri%3Dhttps%253A%252F%252Frstudio.cloud%252Flogin%26client_id%3Drstudio-cloud%26response_type%3Dcode%26show_auth%3D0%26show_login%3D0%26show_setup%3D0). Esta última será para fines de respaldo operativo si la o el sustentante tiene problemas técnicos, durante el curso, para ejecutar los ejercicios a realizar.
+- Cuenta de GitHub habilitada (se revisará en curso su creación).
+- Cuenta de Shiny apps (se abrirá durante el curso)
+
+Para acreditar el curso deberá presentarse lista en la plataforma Moodle y cubrirse el número de horas teóricas y prácticas, junto con las tareas y cuestionarios aplicables.
+
+
+## Para comprobación para beca al desempeño ESDEPED
+
+Adicional a la constancia proporcionada por la FCCA, la o el sustentane podrá descargar el presente programa en [formato *.pdf presionando esta liga](index.pdf)
+
+## Forma de inscribirse:
+
+[plataforma Moodle del Dr. Oscar De la Torre Torres](https://moodle1.cursosdelatorreybollain.com/)
+
+# Contacto
+
+Cualquier necesidad o problema técnico, favor de comunicarse en la página de contacto de mi sitio web: [https://www.oscardelatorretorres.com/contacto](https://www.oscardelatorretorres.com/contacto)
+
+# Material adicional:
+
+- [Presentaciones de las sesiones de clase](https://oscarvdelatorretorres.github.io/cursos/cursoR2024/presentaciones/)
