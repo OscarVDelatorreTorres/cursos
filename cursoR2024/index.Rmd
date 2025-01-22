@@ -1,6 +1,5 @@
 ---
-title: Curso de diseño y publicación de documentos web, notas interactivas y resultados
-  de investigación empleando Rstudio y GitHub (2024)
+title: Curso de programación y desarrollo de documentos electrónicos e interactivos en Rstudio para profesores de las ciencias económico-administrativas (2024)
 author: "Dr. Oscar V. De la Torre Torres"
 header_includes:
 - \usepackage{amsmath}
@@ -8,10 +7,9 @@ header_includes:
 - \usepackage{amsthm}
 - \usepackage{mathtools}
 output:
-  html_document:
+  pdf_document:
     toc: true
-    toc_depth: 5
-    toc_float: true
+    toc_depth: '5'
   bookdown::pdf_document2:
     toc: true
     number_sections: true
@@ -24,9 +22,10 @@ output:
   word_document:
     toc: true
     toc_depth: '5'
-  pdf_document:
+  html_document:
     toc: true
-    toc_depth: '5'
+    toc_depth: 5
+    toc_float: true
 link-citations: true
 citecolor: blue
 linkcolor: blue
