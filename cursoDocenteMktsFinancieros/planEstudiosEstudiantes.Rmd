@@ -1,0 +1,122 @@
+---
+title: "Programación en Rstudio y generación de contenido web interactivo para estudiantes de las Ciencias Económico-Administrativas"
+
+header_includes:
+- \usepackage{amsmath}
+- \usepackage{amssymb}
+- \usepackage{amsthm}
+- \usepackage{mathtools}
+author: "Dr. Oscar V. De la Torre Torres"
+date: "Fecha de elaboración: 02 de agosto del 2023"
+output: 
+  bookdown::pdf_document2:
+    fig_height: 6
+    fig_width: 7
+    number_sections: yes
+    toc: no
+    toc_depth: 4
+  bookdown::html_document2:
+    fig_height: 6
+    fig_width: 7
+    number_sections: yes
+    theme: cerulean
+    toc: yes
+    toc_depth: 4
+    toc_float: yes
+---
+
+```{r setup, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
+library(stargazer)
+library(plotly)
+library(Quandl)
+library(siebanxicor)
+library(flextable)
+library(knitr)
+options(tinytex.verbose = TRUE)
+set_flextable_defaults(fonts_ignore=TRUE)
+```
+
+```{r, echo=FALSE, out.width="15%", fig.align="center"}
+include_graphics("LogoFCCA.png")
+```
+
+# Fechas propuestas y duración del curso
+
+- **Duración:** 20 horas, impartidas en 5 días de sesiones de 4 horas (2 horas teóricas y 2 horas prácticas).
+
+# Objetivo del curso
+
+El mismo está enfocado a estudiantes de las ciencias económico-administrativas que deseen conocer elementos introductorios y útiles de programación en R. esto para poder generar documentos electrónicos, realizar simulaciones y pruebas en sus trabajos de análisis o investigación o para poder generar sitios web de información. Esto empleando uno de los lenguajes de programación más versátiles y empleados en la industria de la ciencia de datos y en las áreas de inteligencia de negocio.
+
+1. Elaborar notas o documentos académicos que puedan publicarse en línea, mismos que se puedan publicar de manera rápida y puedan incluir ecuaciones, gráficas interactivas, códigos y vídeos e incluso aplicaciones interactivas en línea.
+2. Realizar documentos de ejecución de análisis y presentación de resultados que permitan realizar múltiples análisis cuantitativos y cualitativos en un solo documento o archivo. Documento que podría publicarse en formato *.pdf, página web, dashboard, libro electrónico, presentación y otros.
+3. Realizar sitios web o espacios especiales para observatorios, publicación de datos de estudios, etc.
+4. Poder tener, en un solo archivo, la capacidad de realizar todos los experimentos analizando archivos de múltiples paqueterías como son SAS, Stata, Minitab, SPSS, Eviews, entre otras. Esto para, con un solo proceso, elaborar los documentos, tablas y figuras con procesos automatizados.
+5. Poder ejecutar análisis cuantitativos y de análisis de datos, integrando información de bases de datos propias, externas e incluso extraer y procesar, con un solo click y proceso programado, datos de fuentes externas como Banxico, INEGI, Banco Mundial, sitios web, redes sociales, software económico y financiero especializado como Bloomberg o Reuters, etc.
+7. Procesar en un solo archivo múltiples metodologías de análisis que se harían en programas especializados diferentes y que requeriría de mucho tiempo correr y compilar. El programar en Rstudio permitirá una unificación del análisis en un solo  para incluso tener un registro científico o documental (publicable en *.pdf, sitio web, libro electrónico, laTexm etc.) del análisis realizado.
+6. Poder elaborar notas interactivas para ejecutar código de R en sitios web o espacios de trabajo colaborativo.
+
+El objetivo del presente curso tiene un énfasis en los usos 1, 2 y 3, observando que los objetivos 4 y 5 van implícitos en la revisión del curso. Dada la temporalidad y naturaleza introductoria del mismo, la programación y tipos de documentos serán *"básicos"* pero suficientes para que la o el sustentante puedan desarrollar notas en línea, asi como archivos de análisis personal.
+
+De manera complementaria, el presente curso tiene también como objetivo apoyar los conocimientos de programación de la Licenciatura en Actuaría y Ciencia de Datos, la cual está coordinada por la Facultad de Contaduría y Ciencias Administrativas, junto con la Facultad de Físico Matemáticas y la Facultad de Economía.
+
+# Población objetivo del presente curso
+
+Este curso está enfocado primordialmente a estudiantes de licenciatura y posgrado que deseen conocer técnicas de programación para su análisis cuantitativo, aplicable a sus actividades profesionales o de investigación.
+
+# Temario
+
+Dado lo anterior, el temario a cubrir será el siguiente:
+
+```{r temarioT, echo=FALSE, results='asis'}
+temario=data.frame(DIA=c("1 a 2","3 a 4","5 a 6","7 a 8","9 a 10"),
+           Tema=c("Instalación e introducción a programación básica en R: archivos Rmarkdown",
+                  "Extracción de datos externos y elaboración de tablas de resumen",
+                  "Extracción de datos de Banco de México y bases externas y gráficas con Ggplot y plotly",
+                  "Compilación de presentaciones, sitios, páginas web y dashboards",
+                  "Publicación de páginas y sitios web en Rpubs y netlify, así como generación básica de sitios interactivos con shinyapps"),
+           Horas.clase=c(4,4,4,4,4),
+           Horas.practicas=c(4,4,4,4,4))
+flextable(temario)%>%set_header_labels(DIA= "Sesión de clase", 
+    Tema = "Tema a abordar", Horas.clase = "Horas teóricas",
+    Horas.practicas = "Horas prácticas" )%>%theme_vanilla()%>%set_caption("Temario del curso a impartir")%>%width(width =  1)
+```
+
+**El curso tiene un total de 40 horas (20 teóricas y 20 prácticas).**
+
+## Descripción temática
+
+De la tabla \@ref(tab:temarioT) se puede apreciar 5 temas que se describen a continuación:
+
+1. **Instalación e introducción a programación básica en R: archivos Rmarkdown**: En este tema se tendrá una primera sesión informativa para poder inscribirse al [Microsoft Teams del curso](https://teams.microsoft.com/l/channel/19%3aCX1b7Fr-umdqtTIyt6NyGIXJ6ylF17ui0ta5yh8qMoQ1%40thread.tacv2/General?groupId=04e17f29-e8f1-478f-9467-8d8a45739c02&tenantId=9daedba0-bfb6-497b-b5b2-033489a731f2), así como para crear una cuenta de respaldo en [Rstudio cloud](https://login.rstudio.cloud/register?redirect=%2Foauth%2Fauthorize%3Fredirect_uri%3Dhttps%253A%252F%252Frstudio.cloud%252Flogin%26client_id%3Drstudio-cloud%26response_type%3Dcode%26show_auth%3D0%26show_login%3D0%26show_setup%3D0), así como para dar instrucciones generales para la instalación de `R` y `Rstudio` en su computadora. Esto conforme se establece en las [notas introductorias del curso](https://www.rpubs.com/odelatorre/CursoR). En esta primera sesión se aprenderá a crear objetos básicos como tipo caracter, número, tabla de datos o lista, así como la generación se archivos de `Rmarkdown` (bookdown para ser más específicos) en donde se compilarán documentos y se insertarán pedazos de código de programación en `R`.
+
+2. **Extracción de datos externos y elaboración de tablas de resumen**: En este tema se aprenderá a importar datos externos de archivos de Excel y se generarán tablas de resumen o eprsonalizadas como son las elaboradas con las librería `DT`, `Kable` o `stargazer`. De manera complementaria, se aprenderá a exportar las tablas generadas a archivos de Excel, Word, pdf o Latex con la ayuda de la librería stargazer.
+
+3. **Extracción de datos de Banco de México, INEGI y bases externas y gráficas con plotly**: En este tema se aprenderá a conectarse a las multiples bases de datos externas que ofrecen acceso a `R` como son el Banco de México o las bases del repositorio `Quandl`. Se aprenderá cómo generar el token de las apis de estos 2 ejemplos, así como un ejemplo de extracción de código de datos de INEGI.
+Con los datos procesados, se aprenderá a graficar con la librería `ggplot2`y a hacer gráficas interactivas con `plotly`. Se cerrará el tema viendo cómo exportar estas gráficas a archivos \*.jpeg.
+
+4. **Compilación de presentaciones, sitios, páginas web y dashboards**: Se aprenderá en este tema a compilar otro tipo de documentos como son presentaciones con fragmentos de código o fórmulas, así como hacer tableros interactivos o sitios web pequeños con la ayuda de los `flexdashboards` propios de `Rmarkdown`.
+
+5. **Publicación de páginas y sitios web en Rpubs y netlify, así como generación básica de sitios interactivos con shinyapps**: En este tema se revisarán dudas o planteamientos específicos de los 2 temas anteriores y se aprenderá cómo publicar los sitios, páginas y presentaciones en servidores como son Rpubs o Netlify. De manera complementaria, se mostrará cómo compilar y publicar sitios web o aplicaciones interactivas (por ejemplo para observatorios o aplicaciones en línea) en shinny apps, por medio de una cuenta gratuita. Se cerrará el curso con dudas y respuesta específicas de todo el curso.
+
+
+# Material de trabajo necesario, horario y consideraciones generales
+
+El horario planeado para el curso es del lunes 14 al viernes 15 de diciembre de 2023, en horario de 10:00 a 12:00 horas. El formato de enseñanza será virtual por medio de **Google classroom**.
+
+Las herramientas necesarias para cursar y acreditar el curso son:
+
+- Computadora (PC o mac).
+- Cuenta de Rstudio cloud abierta en [Rstudio cloud](https://login.rstudio.cloud/register?redirect=%2Foauth%2Fauthorize%3Fredirect_uri%3Dhttps%253A%252F%252Frstudio.cloud%252Flogin%26client_id%3Drstudio-cloud%26response_type%3Dcode%26show_auth%3D0%26show_login%3D0%26show_setup%3D0). Esta última será para fines de respaldo operativo si la o el sustentante tiene problemas técnicos, durante el curso, para ejecutar los ejercicios a realizar.
+- O Tener instalado en su computadora personal `R` y `Rstudio` siguiendo las consideraciones y guías de las notas del primer día ([notas introductorias del curso](https://www.rpubs.com/odelatorre/CursoR) ).
+
+Para acreditar el curso deberá presentarse lista en el formato especificado dentro de Microsoft Teams y cubrirse el número de horas teóricas y prácticas, junto con las tareas y cuestionarios aplicables.
+
+
+## Para comprobación para beca al desempeño ESDEPED
+
+Adicional a la constancia proporcionada por la FCCA, la o el sustentane podrá descargar el presente programa en [formato *.pdf presionando esta liga](https://www.dropbox.com/s/vp8f6ntrxg9c5bc/planEstudiosEstudiantes.pdf?raw=1)
+
+# Contacto
+
+Cualquier necesidad o problema técnico, favor de comunicarse en la página de contacto del sitio web dle dr. Oscar Valdemar De la Torre Torres: [https://www.oscardelatorretorres.com/contacto](https://www.oscardelatorretorres.com/contacto)

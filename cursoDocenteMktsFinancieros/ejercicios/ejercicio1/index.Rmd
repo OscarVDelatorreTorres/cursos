@@ -1,0 +1,48 @@
+---
+title: "Ejercicio de extracción de datos de Banxico"
+author: "Su nombre aquí"
+date: "2023-12-08"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(openxlsx)
+library(plotly)
+library(siebanxicor)
+```
+
+# Instrucciones 
+
+(asegúrese de borrar este tema en su entrega)
+
+Por favor, utilizando su token de Banxico que puede descargar de [esta liga](https://www.banxico.org.mx/SieAPIRest/service/v1/token), busque el histórico de las siguientes series de tiempo quincenales de índices de precios al consumidor.
+
+1. Índice general de precios al consumidor.
+2. Índice de precios al consumidor subyacente.
+3. Índice de precios al consumidor no subyacente.
+4. Índice de precios al consumidor subyacente de mercancías.
+5. Índice de precios al consumidor subyacente de servicios.
+6. Índice de precios al consumidor no subyacente de agropecuarios.
+7. Índice de precios al consumidor no subyacente de energéticos y tarifas autorizadas por el gobierno.
+
+Con ellos elabore lo siguiente:
+
+1. Una tabla de datos en un objeto data.frame e imprima el resultado en pantalla.
+2. Una tabla de resumen estadístico.
+3. Una discusión personal en formato libre respecto a sus conclusiones de qué tipo de bien o servicio (de los índices 4 a 7) son los que podrían contribuir más a la inflación.
+
+Recuerde que es un curso de programación por lo que no se calificarán sus comentarios de análisis económico sino su capacidad de elaborar notas web en una página.
+
+El documento a entregar es algo muy breve con formato de ensayo (introducción, desarrollo, conclusiones).
+
+El entregable a subir es el archivo \*.Rmd, un documento en \*.html (página web) y otro en word (\*.docx).
+
+El archivo Rmarkdown con el que puede trabajar (el que se utilizó para compilar estas instrucciones) [lo puede descargar en esta liga](https://www.dropbox.com/scl/fi/3a2i6gyywnst7g8g4kwce/index.Rmd?rlkey=jjmiycsens15k0oqn6143o338&dl=1).
+
+# Tema 1
+## Subtema a 1.1
+### subtema 1.1.1
+
+# Tema 2
+## subtema 2.1

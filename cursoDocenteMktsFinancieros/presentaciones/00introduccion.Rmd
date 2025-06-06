@@ -1,0 +1,111 @@
+---
+title: Programación en R y Rstudio para el desarrollo de documentos electrónicos e
+  interactivos
+author: "Dr. Oscar V. De la Torre Torres"
+date: "2023-12-04"
+output:
+  slidy_presentation: default
+  ioslides_presentation: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(stargazer)
+library(plotly)
+library(Quandl)
+library(siebanxicor)
+library(stargazer)
+library(flextable)
+library(officer)
+```
+
+# Qué es R y Rstudio
+
+R es un lenguaje de programación de **segundo nivel** y es uno de los más utilizados, junto con Python, en el quehacer académico, informático y científico.
+
+R es un lenguaje similar a lenguajes previos como son MATLAB (Octave), Python o S. El mismo surge como una alternativa de fuente abierta al lenguaje de programación S desarrollado por uno de sus credores mientras trabajaba en los laboratorios Bell. Posteriormente, se desarrolló el lenguaje en la Universidad de Auckland, Nueva Zelanda por Ross Ihaka, Robert Gentleman y John Chambers (el creador de S). Derivado de esto, R se ha convertido en un referente y, junto con Python es el lenguaje de programación técnica más utilizado en la ciencia y la práctica profesional.
+
+Gracias a la flexibilidad para crear programas, existe una pléyade de paqueterías o librerías que contienen funciones o programas, mismos que pueden llamarse al ambiente de trabajo y ejecutarse por medio de sintaxis o líneas de comandos.
+
+# Para qué puede ser útil
+
+1. Correr análisis estadísticos, de ciencia de datos (inteligencia artificial), análisis cuantitativos con código de fuente abierta.
+2. Tener documentos especiales en donde mis corridas y análisis los tenga en un mismo archivo y se corran de manera automática una vez programados.
+3. Poder automatizar tareas repetitivas de cálculos, análisis, procesos de trabajo o descarga de datos.
+4. Poder elaborar notas en línea ya sean estáticas o con aplicaciones interactivas. Esto apra impartir clases, cursos o transmitir ideas.
+5. Poder realizar, gratuitamente, muchos análisis que con otro software nos costaría pagar licencias.
+
+# Rstudio, GitHub y Shiny
+
+El motor de programación R original es muy robusto pero muy limitado en su interfaz. Rstudio es una interfaz de usuario más amigable y visual que permite generar todo tipo de documentos y aplicaciones.
+
+En Rstudio pueden correrse incluso otros lenguajes como Python, octave, MATLAB, Julia, JSon y otros.
+
+[GitHub](https://github.com) es un repositorio (el más grande y principal) de acceso abierto en donde podemos publicar código de software, páginas web y muchos tipos de archivos. Esto de manera privada o p{ublica.
+
+[Shiny](https://shinyapps.io) es un servidor que tiene licencias gratuitas para poder publicar aplicaciones o sitios web interactivos compiladas en Rstudio.
+
+[Rstudio cloud](https://posit.cloud) es un servicio en donde se puede instalar y utilizar Rstudio y R (así como python y Jupyter notebooks) de manera rápida y accesible desde cualquier navegador de internet.
+
+# Temario
+
+```{r temarioT, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE}
+temario=data.frame(Día=c("1 a 2","3 a 4","5 a 6","7 a 8","9 a 10"),
+           Tema=c("Instalación e introducción a programación básica en R: archivos Rmarkdown",
+                  "Extracción de datos externos y elaboración de tablas de resumen",
+                  "Extracción de datos de Banco de México y bases externas y gráficas con ggplot y plotly",
+                  "Compilación de presentaciones, sitios, páginas web y dashboards",
+                  "Publicación de páginas y sitios web en Rpubs y netlify, así como generación básica de sitios interactivos con shinyapps"),
+           Horas.clase=c(2,2,2,2,2),
+           Horas.prácticas=c(2,2,2,2,2))
+tabla1=flextable(temario)
+
+tabla1=set_header_labels(tabla1,
+                         `Día`="Día",
+                         Tema="Tema a revisar",
+                         `Horas.clase`="Horas de clase por sesión",
+                         `Horas.prácticas`="Horas prácticas")
+tabla1 <- set_caption(tabla1, "Programa a cubrir", 
+  autonum = run_autonum(seq_id = "temarioT"))
+tabla1=width(tabla1,width=4,unit="cm")
+tabla1
+```
+
+**El curso tiene un total de 40 horas (20 teóricas y 20 prácticas).**
+
+## Descripción temática
+
+De la tabla del temario se pueden apreciar los 5 temas que se detallan a continuación:
+
+## Instalación e introducción a programación básica en R: archivos Rmarkdown{#tema1} 
+En esta primera sesión se aprenderá a crear objetos básicos como tipo caracter, número, tabla de datos o lista, así como la generación se archivos de `Rmarkdown` (bookdown para ser más específicos) en donde se compilarán documentos y se insertarán pedazos de código de programación en `R`.
+
+## Extracción de datos externos y elaboración de tablas de resumen{#tema2} 
+
+En este tema se aprenderá a importar datos externos de archivos de Excel y se generarán tablas de resumen o eprsonalizadas como son las elaboradas con las librería `DT`, `Kable` o `stargazer`. De manera complementaria, se aprenderá a exportar las tablas generadas a archivos de Excel, Word, pdf o Latex con la ayuda de la librería stargazer.
+
+## Extracción de datos de Banco de México y bases externas y gráficas con ggplot y plotly{#tema3}
+
+En este tema se aprenderá a conectarse a las multiples bases de datos externas que ofrecen acceso a `R` como son el Banco de México o las bases del repositorio `Quandl`. Se aprenderá cómo generar el token de las apis de estos 2 ejemplos, así como un ejemplo de extracción de código de datos de INEGI.
+Con los datos procesados, se aprenderá a graficar con la librería `ggplot2`y a hacer gráficas interactivas con `plotly`. Se cerrará el tema viendo cómo exportar estas gráficas a archivos \*.jpeg.
+
+## Compilación de presentaciones, sitios, páginas web y dashboards{#tema4}
+
+Se aprenderá en este tema a compilar otro tipo de documentos como son presentaciones con fragmentos de código o fórmulas, así como hacer tableros interactivos o sitios web pequeños con la ayuda de los `flexdashboards` propios de `Rmarkdown`.
+
+## Publicación de páginas y sitios web en Rpubs y netlify, así como generación básica de sitios interactivos con shinyapps{#tema5}
+
+En este tema se revisarán dudas o planteamientos específicos de los 2 temas anteriores y se aprenderá cómo publicar los sitios, páginas y presentaciones en servidores como son Rpubs o Netlify. De manera complementaria, se mostrará cómo compilar y publicar sitios web o aplicaciones interactivas (por ejemplo para observatorios o aplicaciones en línea) en shinny apps, por medio de una cuenta gratuita. Se cerrará el curso con dudas y respuesta específicas de todo el curso.
+
+## Generación de apuntes en línea para cursos y materia con ejecución de códigos en tiempo real{#tema6}
+
+En este tema final se aprende cómo elaborar apuntes, notas en línea y exámenes que requieran la ejecución en tiempo real de ejemplos de código de R. Esto para impartir materias, cursos seminarios o materiales en línea que requieran de programación en R.
+
+# Para comprobación para beca al desempeño ESDEPED
+
+Adicional a la constancia proporcionada por la FCCA, la o el sustentane podrá descargar el presente programa en [formato *.pdf presionando esta liga](index.pdf)
+
+# Contacto
+
+Cualquier necesidad o problema técnico, favor de comunicarse en la página de contacto de mi sitio web: [https://www.oscardelatorretorres.com/contacto](https://www.oscardelatorretorres.com/contacto)
+

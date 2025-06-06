@@ -1,0 +1,143 @@
+---
+title: "Curso de programación y desarrollo de documentos electrónicos e interactivos en Rstudio para profesores de las ciencias económico-administrativas"
+author: Dr. Oscar V. De la Torre-Torres
+format:
+    html:
+      toc: TRUE
+    pdf:
+      toc: TRUE
+citecolor: blue
+linkcolor: blue
+urlcolor: blue
+font: times new roman 
+lang: "Es-Es"
+---
+
+```{r setup, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
+library(stargazer)
+library(plotly)
+library(DT)
+library(kableExtra)
+
+```
+
+```{r, echo=FALSE, out.width="15%", fig.align="center"}
+knitr::include_graphics("LogoFCCA.png")
+```
+
+# Fechas propuestas y duración del curso
+
+- **Fechas:** Del 27 al 31 de enero del 2025 de 10:00 a 12:00 (en línea vía [plataforma Moodle Dr. Oscar De la Torre](https://moodle1.cursosdelatorreybollain.com/course/view.php?id=12)])    .
+- **Duración:** 40 horas, impartidas en 5 días de sesiones de 4 horas (2 horas teóricas y 2 horas prácticas).
+
+# Presentación
+
+El presente curso está orientado a profesores y personal Académico que impartirá la materia de Finanzas III en el semestre **febrero-agosto de 2025** en la Facultad de Contaduría y Ciencias Administrativas. Este curso cuenta con el aval del H. Consejo Técnico de la FCCA y es requisito solicitado por la Academia de Finanzas de dicha dependencia, a efecto de homologar el temario e impartición de la materia en todas las secciones de la misma.
+
+El objetivo temático del mismo es introducir a las y los estudiantes de la Licenciatura en Contaduría en el mundo de los mercados financieros, el ana´lisis y toma de decisiones de inversión, así como la gestión de portafolios. Esto desde la perspectiva de una (un) inversionista privado y uno institucional.
+
+# Temario
+
+Dado lo anterior, el temario a cubrir será el siguiente:
+
+```{r temarioT, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE}
+
+temario=data.frame(Tema=c("1. Introducción al tema","2. Tipos de administración de inversiones","3. Microectructura de los mercados de valores y operaciones en los mismos","4. El proceso de administración de inversione","5. Otros mercadofinancieros que no son valores"),
+                   Fecha=c("27 de enero de 2025","28 de enero de 2025","29 de enero de 2025","30 de enero de 2025","31 de enero de 2025"),
+                   Horario=c("10:00-12:00 teórico + 2 horas de trabajos",
+                             "10:00-12:00 teórico + 2 horas de trabajos",
+                             "10:00-12:00 teórico + 2 horas de trabajos",
+                             "10:00-12:00 teórico + 2 horas de trabajos",
+                             "10:00-12:00 teórico + 2 horas de trabajos"),
+                   Objetivo=c("Introducir a las y los estudiantes al mundo de los mercados financieros, el análisis y toma de decisiones de inversión, así como la gestión de portafolios. Esto desde la perspectiva de una (un) inversionista privado y uno institucional.",
+                              "Conocer los tipos de administración de inversiones que existen, así como sus características principales.",
+                              "Conocer la microestructura de los mercados de valores y las operaciones que se realizan en los mismos.",
+                              "Conocer el proceso de administración de inversiones, así como las etapas del mismo.",
+                              "Conocer otros mercados financieros que no son valores, así como sus características principales.")
+)
+
+kable(temario) 
+```
+
+**El curso tiene un total de 40 horas (20 teóricas y 20 prácticas).**
+
+# Descripción temática
+
+De la tabla del temario se pueden apreciar los 5 temas que se detallan a continuación:
+
+## Introducción a los mercados de valores
+
+En este tema se introduce a las y los estudiantes en el concepto de valor, inversionista, riesgo, rendimiento esperado y tipos de mercados de valores. De manera general, se describen los principales tópicos del tema:
+
+1. Definición de valor.
+2. Tipos de mercados de valores.
+3. Definición de inversionista v.s. especulador y apostador.
+4. Definición de empresa pública v.s. empresa privada.
+
+## Microestructura del mercado de valores y operaciones en los mismos
+
+En este tema se introduce a la estructura de corretage y compra/venta de valores, así como a la herramienta del simulador de inversiones. En el mismo se enseñan los principales tipos de operaciones, plazos de liquidación, adminsitración de la posición del portafolio y se describe la estructura del sistema financiero mexicano e internacional. Los tópicos del tema son:
+
+1. Microestructura del proceso de administración de inversiones.
+2. Estructura y empresas de las bolsas de valore (historia de).
+3. Tipos de operaciones en el mercado de valores y plazos de liquidación.
+4. Introducción al simulador de inversiones.
+5. Esturctura del sistema financiero mexicano.
+6. Análisis fundamental para la toma de decisiones de inversión.
+7. Análisis técnico para la toma de decisiones de inversión.
+
+## Tipos de administración de inversiones
+
+En este tema se revisan los dos principales tipos de administración de inversiones a realizar:
+
+1. Adminsitración pasiva.
+2. Adminsitración activa de inversiones.
+
+## El proceso de administración de inversiones
+
+En este tema se estudian los 4 pasos sugeridos que integran el proceso de administración de inversiones:
+
+1. Definición de objetivos de inversión.
+2. Definir la política de inversión
+3. Ejecutar la política de inversión (realizar las operaciones de compra/venta necesarias)
+4. Evaluar el desempeño de la inversión y realizar los ajustes necesarios.
+
+## Otros mercados financieros que no son valores
+
+En el mismo se revisa la operatividad de otros mercados que no son valores pero, en algunos casos, se operan a través de valores como son futuros, opciones y otros valores. Se revisan los siguientes mercados:
+
+1. Mercados de futuros de índices
+2. Mercados de opciones de índices o acciones.
+3. Mercados de futuros de bienes agrícolas, metálicos y energéticos.
+4. Mercados de divisas y sus derivados.
+
+# Mapa mental del temario del curso:
+
+La siguiente imagen muestra un mapa mental del temario del curso:
+
+```{r, echo=FALSE, out.width="100%", out.height="90%", fig.align="center"}
+knitr::include_graphics("programaFinanzas3.pdf")
+```
+
+# Material de trabajo necesario, horario y consideraciones generales
+
+Las herramientas necesarias para cursar y acreditar el curso son:
+
+- Computadora (PC o mac).
+- Licencia de tradingView gratuita para profesores lograda por medio de convenio entre TradingView y la UMSNH.
+- Cuenta de simulación virtual de inversiones en [interactivebrokers](https://www.interactivebrokers.com/es/home.php) para la comrpar y venta de valores mexicanos y extranjeros como acciones, fondos, futuros, opciones, criptomonedas y otros en mercados tanto mexicanos como internacionales.
+
+Para acreditar el curso deberá presentarse lista en el formato especificado en la plataforma de clase y cubrirse el número de horas teóricas y prácticas, junto con las tareas y cuestionarios aplicables.
+
+
+## Para comprobación para beca al desempeño ESDEPED
+
+Adicional a la constancia proporcionada por la FCCA, la o el sustentane podrá descargar el presente programa en la opción "otros formatos" a la derecha, en la tabkla de contenidos de este programa (página web).
+
+## Forma de inscribirse:
+
+Favor de registrarse en la siguiente [liga de la materia](https://moodle1.cursosdelatorreybollain.com/course/view.php?id=12)). Deberá crear una cuenta de usuario preferentemente con su correo institucional y proporcionar la clave privada de inscripción al grupo que proporcionó la coordinación de actualización docente de la FCCA de la UMSNH.
+
+# Contacto
+
+Cualquier necesidad o problema técnico, favor de comunicarse en la página de contacto de mi sitio web: [https://www.oscardelatorretorres.com/contacto](https://www.oscardelatorretorres.com/contacto)
