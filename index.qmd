@@ -8,7 +8,7 @@ format: html
 
 # Cursos impartidos a estudiantes
 
-[Curso de programación en R con Rstudio para estudiantes](cursoR/indexEstudiantes.qmd)
+[Curso de programación en R con Rstudio para estudiantes](cursoR/indexEstudiantes.html)
 
 
 # Cursos impartidos a profesores
