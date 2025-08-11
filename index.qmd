@@ -8,10 +8,12 @@ format: html
 
 # Cursos impartidos a estudiantes
 
-
+[Curso de programación en R con Rstudio para estudiantes](cursoR/indexEstudiantes.qmd)
 
 
 # Cursos impartidos a profesores
 
+[Curso de programación en R con Rstudio para profesores](cursoR/index.qmd)
 
+[Curso de introducción institucional de la FCCA para la materia de Finanzas III](cursoDocenteMktsFinancieros/index.qmd)
 
