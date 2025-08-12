@@ -1,5 +1,5 @@
 ---
-title: "Curso de programación y desarrollo de documentos electrónicos e interactivos en Rstudio para profesores de las ciencias económico-administrativas"
+title: "Curso Introducción a la Estadística para el Curso propedéutico del doctorado en Administración de la FCCA de la UMSNH (Generación 2025)"
 author: Dr. Oscar V. De la Torre-Torres
 format:
     html:
@@ -18,7 +18,7 @@ library(stargazer)
 library(plotly)
 library(DT)
 library(kableExtra)
-
+library(openxlsx)
 ```
 
 ```{r, echo=FALSE, out.width="15%", fig.align="center"}
@@ -27,14 +27,16 @@ knitr::include_graphics("LogoFCCA.png")
 
 # Fechas propuestas y duración del curso
 
-- **Fechas:** Del 27 al 31 de enero del 2025 de 10:00 a 12:00 (en línea vía [plataforma Moodle Dr. Oscar De la Torre](https://moodle1.cursosdelatorreybollain.com/course/view.php?id=12)])    .
-- **Duración:** 40 horas, impartidas en 5 días de sesiones de 4 horas (2 horas teóricas y 2 horas prácticas).
+- **Fechas:** Del 6 de marzo al 14 de agosto del 2025 de 17:00 a 19:00 horas (en línea vía [plataforma Moodle Dr. Oscar De la Torre](https://moodle1.cursosdelatorreybollain.com/course/view.php?id=12)])    .
+- **Duración:** 80 horas, impartidas en 17 sesiones de 2 horas (un total de 34 horas teóricas) y en 18 horas prácticas con ejercicios y actividades en línea.
 
 # Presentación
 
-El presente curso está orientado a profesores y personal Académico que impartirá la materia de Finanzas III en el semestre **febrero-agosto de 2025** en la Facultad de Contaduría y Ciencias Administrativas. Este curso cuenta con el aval del H. Consejo Técnico de la FCCA y es requisito solicitado por la Academia de Finanzas de dicha dependencia, a efecto de homologar el temario e impartición de la materia en todas las secciones de la misma.
+El presente curso tiene de objetivo el introducir y homologar el conocimiento en materia de métodos de análisis estadístico a las y los estudiantes aceptados en el curso propedéutico del doctorado en Administración de la Facultad de Contaduría y Ciencias Administrativas (FCCA) de la Universidad Michoacana de San Nicolás de Hidalgo (UMSNH).
 
-El objetivo temático del mismo es introducir a las y los estudiantes de la Licenciatura en Contaduría en el mundo de los mercados financieros, el ana´lisis y toma de decisiones de inversión, así como la gestión de portafolios. Esto desde la perspectiva de una (un) inversionista privado y uno institucional.
+La acreditación del mismo forma parte de los requisitos de admisión al citado programa de doctorado, tal como se establece en el reglamento del mismo y en las convocatorias publicadas en el [sitio web oficial del posgrado](https://www.fcca.umich.mx/doctorado/).
+
+Las sesiones se impartirán en línea a través de la plataforma [Moodle del profesor](https://moodle1.cursosdelatorreybollain.com/course/view.php?id=4). El presente programa expone la estructura temática, herramientas de trabajo, horarios y consideraciones generales del curso.
 
 # Temario
 
@@ -42,19 +44,8 @@ Dado lo anterior, el temario a cubrir será el siguiente:
 
 ```{r temarioT, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE}
 
-temario=data.frame(Tema=c("1. Introducción al tema","2. Tipos de administración de inversiones","3. Microectructura de los mercados de valores y operaciones en los mismos","4. El proceso de administración de inversione","5. Otros mercadofinancieros que no son valores"),
-                   Fecha=c("27 de enero de 2025","28 de enero de 2025","29 de enero de 2025","30 de enero de 2025","31 de enero de 2025"),
-                   Horario=c("10:00-12:00 teórico + 2 horas de trabajos",
-                             "10:00-12:00 teórico + 2 horas de trabajos",
-                             "10:00-12:00 teórico + 2 horas de trabajos",
-                             "10:00-12:00 teórico + 2 horas de trabajos",
-                             "10:00-12:00 teórico + 2 horas de trabajos"),
-                   Objetivo=c("Introducir a las y los estudiantes al mundo de los mercados financieros, el análisis y toma de decisiones de inversión, así como la gestión de portafolios. Esto desde la perspectiva de una (un) inversionista privado y uno institucional.",
-                              "Conocer los tipos de administración de inversiones que existen, así como sus características principales.",
-                              "Conocer la microestructura de los mercados de valores y las operaciones que se realizan en los mismos.",
-                              "Conocer el proceso de administración de inversiones, así como las etapas del mismo.",
-                              "Conocer otros mercados financieros que no son valores, así como sus características principales.")
-)
+temario=read.xlsx("temario2025.xlsx")
+
 
 kable(temario) 
 ```

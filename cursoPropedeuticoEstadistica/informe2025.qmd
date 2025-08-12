@@ -1,0 +1,41 @@
+---
+title: "Curso Introducción a la Estadística para el Curso propedéutico del doctorado en Administración de la FCCA de la UMSNH (Generación 2025)"
+author: Dr. Oscar V. De la Torre-Torres
+format:
+    html:
+      toc: TRUE
+    pdf:
+      toc: TRUE
+citecolor: blue
+linkcolor: blue
+urlcolor: blue
+font: times new roman 
+lang: "Es-Es"
+---
+
+```{r setup, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
+library(stargazer)
+library(plotly)
+library(DT)
+library(kableExtra)
+library(openxlsx)
+```
+
+```{r, echo=FALSE, out.width="15%", fig.align="center"}
+knitr::include_graphics("LogoFCCA.png")
+```
+
+# Informe de actividades
+
+Morelia, Michoacán, México a 05 de agosto del 2025.
+
+**Dr. Jaime Apolinar Martínez Arroyo**
+Director del Programa de Doctorado en Administración de la FCCA de la UMSNH
+Universidad Michoacana de San Nicolás de Hidalgo, Ciudad
+
+
+Por medio de la presente, le remito un cordial saludo y le informo la conclusión exitosa del curso propedéutico de Introducción a la Estadística para el Programa de Doctorado en Administración de la Facultad de Contaduría y Ciencias Administrativas (FCCA) de la Universidad Michoacana de San Nicolás de Hidalgo (UMSNH), correspondiente a la generación 2025.
+
+El programa anexo a la impresión del presente informe se puede consultar en la siguiente liga: 
+
+# Relación de estudiantes aprobados

@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="Es-Es" xml:lang="Es-Es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.41">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Dr.&nbsp;Oscar V. De la Torre-Torres">
+
+<title>Curso Introducción a la Estadística para el Curso propedéutico del doctorado en Administración de la FCCA de la UMSNH (Generación 2025)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/quarto.js"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="index_files/libs/quarto-html/anchor.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-48ffa3e5b9d089919c6712c39e5b00f2.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="index_files/libs/bootstrap/bootstrap-eca236fe1b33bd76b4652488b634cbfe.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="index_files/libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="index_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="index_files/libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="index_files/libs/datatables-binding-0.33/datatables.js"></script>
+<script src="index_files/libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="index_files/libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="index_files/libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="index_files/libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="index_files/libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="index_files/libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#fechas-propuestas-y-duración-del-curso" id="toc-fechas-propuestas-y-duración-del-curso" class="nav-link active" data-scroll-target="#fechas-propuestas-y-duración-del-curso">Fechas propuestas y duración del curso</a></li>
+  <li><a href="#presentación" id="toc-presentación" class="nav-link" data-scroll-target="#presentación">Presentación</a></li>
+  <li><a href="#temario" id="toc-temario" class="nav-link" data-scroll-target="#temario">Temario</a></li>
+  <li><a href="#descripción-temática" id="toc-descripción-temática" class="nav-link" data-scroll-target="#descripción-temática">Descripción temática</a>
+  <ul class="collapse">
+  <li><a href="#introducción-a-la-estadística" id="toc-introducción-a-la-estadística" class="nav-link" data-scroll-target="#introducción-a-la-estadística">Introducción a la Estadística</a></li>
+  <li><a href="#estadística-descriptiva" id="toc-estadística-descriptiva" class="nav-link" data-scroll-target="#estadística-descriptiva">Estadística descriptiva</a>
+  <ul class="collapse">
+  <li><a href="#medidas-descriptivas" id="toc-medidas-descriptivas" class="nav-link" data-scroll-target="#medidas-descriptivas">Medidas descriptivas</a></li>
+  <li><a href="#cálculo-de-probabilidades" id="toc-cálculo-de-probabilidades" class="nav-link" data-scroll-target="#cálculo-de-probabilidades">Cálculo de probabilidades</a></li>
+  </ul></li>
+  <li><a href="#estadística-inferencial" id="toc-estadística-inferencial" class="nav-link" data-scroll-target="#estadística-inferencial">Estadística inferencial</a>
+  <ul class="collapse">
+  <li><a href="#teoría-del-muestreo" id="toc-teoría-del-muestreo" class="nav-link" data-scroll-target="#teoría-del-muestreo">Teoría del muestreo</a></li>
+  <li><a href="#prueba-de-hipótesis-con-técnica-clásica" id="toc-prueba-de-hipótesis-con-técnica-clásica" class="nav-link" data-scroll-target="#prueba-de-hipótesis-con-técnica-clásica">Prueba de hipótesis con técnica clásica</a></li>
+  <li><a href="#prueba-de-hipótesis-con-técnica-clásica-1" id="toc-prueba-de-hipótesis-con-técnica-clásica-1" class="nav-link" data-scroll-target="#prueba-de-hipótesis-con-técnica-clásica-1">Prueba de hipótesis con técnica clásica</a></li>
+  <li><a href="#prueba-de-hipótesis-con-técnica-anova" id="toc-prueba-de-hipótesis-con-técnica-anova" class="nav-link" data-scroll-target="#prueba-de-hipótesis-con-técnica-anova">Prueba de hipótesis con técnica ANOVA</a></li>
+  </ul></li>
+  <li><a href="#estadística-no-paramétrica-generalidades-y-pruebas-de-hipótesis" id="toc-estadística-no-paramétrica-generalidades-y-pruebas-de-hipótesis" class="nav-link" data-scroll-target="#estadística-no-paramétrica-generalidades-y-pruebas-de-hipótesis">Estadística no paramétrica: generalidades y pruebas de hipótesis</a></li>
+  </ul></li>
+  <li><a href="#material-de-trabajo-necesario-horario-y-consideraciones-generales" id="toc-material-de-trabajo-necesario-horario-y-consideraciones-generales" class="nav-link" data-scroll-target="#material-de-trabajo-necesario-horario-y-consideraciones-generales">Material de trabajo necesario, horario y consideraciones generales</a>
+  <ul class="collapse">
+  <li><a href="#forma-de-inscribirse" id="toc-forma-de-inscribirse" class="nav-link" data-scroll-target="#forma-de-inscribirse">Forma de inscribirse:</a></li>
+  </ul></li>
+  <li><a href="#contacto" id="toc-contacto" class="nav-link" data-scroll-target="#contacto">Contacto</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Otros formatos</h2><ul><li><a href="index.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Curso Introducción a la Estadística para el Curso propedéutico del doctorado en Administración de la FCCA de la UMSNH (Generación 2025)</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Dr.&nbsp;Oscar V. De la Torre-Torres </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="LogoFCCA.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:15.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="fechas-propuestas-y-duración-del-curso" class="level1">
+<h1>Fechas propuestas y duración del curso</h1>
+<ul>
+<li><strong>Fechas:</strong> Del 6 de marzo al 14 de agosto del 2025 de 17:00 a 19:00 horas (en línea vía <a href="https://moodle1.cursosdelatorreybollain.com/course/view.php?id=12">plataforma Moodle Dr.&nbsp;Oscar De la Torre</a>]) .</li>
+<li><strong>Duración:</strong> 80 horas, impartidas en 17 sesiones de 2 horas (un total de 34 horas teóricas) y en 46 horas prácticas con ejercicios y actividades en línea.</li>
+</ul>
+</section>
+<section id="presentación" class="level1">
+<h1>Presentación</h1>
+<p>El presente curso tiene de objetivo el introducir y homologar el conocimiento en materia de métodos de análisis estadístico a las y los estudiantes aceptados en el curso propedéutico del doctorado en Administración de la Facultad de Contaduría y Ciencias Administrativas (FCCA) de la Universidad Michoacana de San Nicolás de Hidalgo (UMSNH).</p>
+<p>La acreditación del mismo forma parte de los requisitos de admisión al citado programa de doctorado, tal como se establece en el reglamento del mismo y en las convocatorias publicadas en el <a href="https://www.fcca.umich.mx/doctorado/">sitio web oficial del posgrado</a>.</p>
+<p>Las sesiones se impartirán en línea a través de la plataforma <a href="https://moodle1.cursosdelatorreybollain.com/course/view.php?id=4">Moodle del profesor</a>. El presente programa expone la estructura temática, herramientas de trabajo, horarios y consideraciones generales del curso.</p>
+</section>
+<section id="temario" class="level1">
+<h1>Temario</h1>
+<p>Dado lo anterior, el temario a cubrir será el siguiente:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-d25a07f96e3d50c23d64" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-d25a07f96e3d50c23d64">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["Introducción a la Estadística","Estadística descriptiva: Medidas descriptivas","Estadística descriptiva: Cálculo de probabilidades","Estadística descriptiva: Introducción al cálculo de probabilidades","Estadística descriptiva: Revisión de las principales funciones de probabilidad","Estadística inferencial: Teoría del muestreo","Estadística inferencial: Comprobación de hipótesis con técnica clásica","Estadística inferencial: Comprobación de hipótesis con técnica Xi-cuadrada","Estadística inferencial: Comprobación de hipótesis con técnica ANOVA","Estadística no paramétrica: generalidades y pruebas de hipótesis"],["2025-02-06","2025-03-13","2025-04-03","2025-04-10","2025-05-01","2025-05-29","2025-06-20","2025-07-04","2025-08-07","2025-08-14"],["2025-02-06","2025-03-27","2025-04-03","2025-04-10","2025-05-22","2025-05-29","2025-06-27","2025-07-11","2025-08-07","2025-08-14"],[1,3,1,1,4,1,2,2,1,1],[2,6,2,2,8,2,4,4,2,2],[2,4,2,5,5,2,3,3,2,2]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Tema<\/th>\n      <th>Fecha.inicial<\/th>\n      <th>Fecha.Final<\/th>\n      <th>Sesiones<\/th>\n      <th>Horas.teóricas<\/th>\n      <th>Horas.prácticas<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[4,5,6]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Tema","targets":1},{"name":"Fecha.inicial","targets":2},{"name":"Fecha.Final","targets":3},{"name":"Sesiones","targets":4},{"name":"Horas.teóricas","targets":5},{"name":"Horas.prácticas","targets":6}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p><strong>El curso tiene un total de 80 horas (34 teóricas y 46 prácticas).</strong></p>
+</section>
+<section id="descripción-temática" class="level1">
+<h1>Descripción temática</h1>
+<p>De la tabla del temario se pueden apreciar los 10 temas que se detallan a continuación:</p>
+<section id="introducción-a-la-estadística" class="level2">
+<h2 class="anchored" data-anchor-id="introducción-a-la-estadística">Introducción a la Estadística</h2>
+<p>En este tópico se hace una introducción a la Estadística, así como a sus dos principales ramas con las que se estructura el temario:</p>
+<ol type="1">
+<li>Estadística descriptiva: En este apartado se revisan los conceptos básicos de la estadística, así como las medidas de tendencia central y de dispersión. Se aprenderá a elaborar tablas y gráficas para resumir datos.</li>
+<li>Estadística inferencial: En este apartado se revisan los conceptos básicos de la inferencia estadística, así como las pruebas de hipótesis y los intervalos de confianza. Se aprenderá a realizar inferencias sobre poblaciones a partir de muestras. Inferencias tales como comprobaciones de hipótesis, intervalos de confianza y regresiones lineales simples.</li>
+</ol>
+</section>
+<section id="estadística-descriptiva" class="level2">
+<h2 class="anchored" data-anchor-id="estadística-descriptiva">Estadística descriptiva</h2>
+<section id="medidas-descriptivas" class="level3">
+<h3 class="anchored" data-anchor-id="medidas-descriptivas">Medidas descriptivas</h3>
+<p>En este apartado se revisan los conceptos básicos de la estadística descriptiva, así como las medidas de tendencia central y de dispersión. De manera complementaria se aprenderán las medidas de concordancia y forma de la distribución de los datos. Se aprenderá a elaborar tablas y gráficas para resumir datos, a través de R y Python, así como la extracción de datos de fuentes externas a través de APIs o directamente de archivos *.txt, excel o csv.</p>
+</section>
+<section id="cálculo-de-probabilidades" class="level3">
+<h3 class="anchored" data-anchor-id="cálculo-de-probabilidades">Cálculo de probabilidades</h3>
+<p>En este apartado se revisan los conceptos básicos de la probabilidad, así como las distribuciones de probabilidad más comunes. Se aprenderá a calcular probabilidades de funciones de probabilidad discretas como son la Poisson, la binomial o la hipergeométrica. De manera adicional, se estudiarán funciones de probabilidad continuas como la normal, la exponencial o la t de Student. Los cálculos de probabilidad se harán con el apoyo de R y Python.</p>
+</section>
+</section>
+<section id="estadística-inferencial" class="level2">
+<h2 class="anchored" data-anchor-id="estadística-inferencial">Estadística inferencial</h2>
+<p>En este sub tema general se revisa lo relativo a las inferencias de la Estadística, a efecto de hacer descripciones generalizables del comportamiento de una variable aleatoria a partir de una muestra</p>
+<section id="teoría-del-muestreo" class="level3">
+<h3 class="anchored" data-anchor-id="teoría-del-muestreo">Teoría del muestreo</h3>
+<p>En este apartado se revisan los conceptos básicos de la teoría del muestreo, así como los diferentes tipos de muestreo. Se aprenderá a seleccionar muestras representativas y a calcular errores muestrales. Se aprenderá a realizar inferencias sobre poblaciones a partir de muestras, así como el cálculo de intervalos de confianza.</p>
+</section>
+<section id="prueba-de-hipótesis-con-técnica-clásica" class="level3">
+<h3 class="anchored" data-anchor-id="prueba-de-hipótesis-con-técnica-clásica">Prueba de hipótesis con técnica clásica</h3>
+<p>En este apartado se revisan los conceptos básicos de la prueba de hipótesis, así como las diferentes técnicas de prueba. Se aprenderá a formular hipótesis nulas y alternativas, así como a calcular valores críticos y p-valores. Se aprenderá a realizar pruebas de hipótesis para medias y proporciones.</p>
+</section>
+<section id="prueba-de-hipótesis-con-técnica-clásica-1" class="level3">
+<h3 class="anchored" data-anchor-id="prueba-de-hipótesis-con-técnica-clásica-1">Prueba de hipótesis con técnica clásica</h3>
+<p>En este apartado se extiende la revisión de pruebas de hipótesis para varianzas o pares de varianzas con los mismos grados de libertad. En este tema se hará una primera introducción a las pruebas de bondad de ajusted como es la prueba Jarque-Bera para determinar si la función de probabilidad gaussiana describe el comportamiento aleatorio de los datos estudiados.</p>
+</section>
+<section id="prueba-de-hipótesis-con-técnica-anova" class="level3">
+<h3 class="anchored" data-anchor-id="prueba-de-hipótesis-con-técnica-anova">Prueba de hipótesis con técnica ANOVA</h3>
+<p>En este apartado se revisan los conceptos básicos de la técnica ANOVA, así como las diferentes técnicas de prueba. Se aprenderá a formular hipótesis nulas y alternativas, así como a calcular valores críticos y p-valores. Se aprenderá a realizar pruebas de hipótesis para el caso en el que las varianzas comparadas no tienen los mismos grados de libertad, así como a realizar pruebas de hipótesis para comparar más de dos medias poblacionales.</p>
+</section>
+</section>
+<section id="estadística-no-paramétrica-generalidades-y-pruebas-de-hipótesis" class="level2">
+<h2 class="anchored" data-anchor-id="estadística-no-paramétrica-generalidades-y-pruebas-de-hipótesis">Estadística no paramétrica: generalidades y pruebas de hipótesis</h2>
+<p>En este apartado se revisan los conceptos básicos de la estadística no paramétrica, así como las diferentes técnicas de prueba. Se aprenderá a formular hipótesis nulas y alternativas, así como a calcular valores críticos y p-valores. Se aprenderá a realizar pruebas de hipótesis no paraméricas de bondad de ajuste como son la Kolmogorov-Smirnov y la Anderson-Darling.</p>
+</section>
+</section>
+<section id="material-de-trabajo-necesario-horario-y-consideraciones-generales" class="level1">
+<h1>Material de trabajo necesario, horario y consideraciones generales</h1>
+<p>Las herramientas necesarias para cursar y acreditar el curso son:</p>
+<ul>
+<li>Computadora (PC o mac).</li>
+<li>Instalar la versión de fuente abierta de <a href="https://cran.r-project.org/">R</a> y <a href="https://posit.co/download/rstudio-desktop/">RStudio</a>.</li>
+</ul>
+<p>Para acreditar el curso deberá presentarse lista en el formato especificado en la plataforma de clase y cubrirse el número de horas teóricas y prácticas, junto con las tareas y cuestionarios aplicables.</p>
+<p><strong>La calificación mínima aprobatoria es de 8</strong>.</p>
+<section id="forma-de-inscribirse" class="level2">
+<h2 class="anchored" data-anchor-id="forma-de-inscribirse">Forma de inscribirse:</h2>
+<p>Favor de registrarse en la siguiente <a href="https://moodle1.cursosdelatorreybollain.com/course/view.php?id=12">liga de la materia</a>. Deberá crear una cuenta de usuario preferentemente con su correo institucional y proporcionar la clave privada de inscripción al grupo que proporcionó la coordinación del Doctorado en Adminsitración de la FCCA de la UMSNH.</p>
+</section>
+</section>
+<section id="contacto" class="level1">
+<h1>Contacto</h1>
+<p>Cualquier necesidad o problema técnico, favor de comunicarse en la página de contacto de mi sitio web: <a href="https://moodle1.cursosdelatorreybollain.com/course/view.php?id=4">https://www.oscardelatorretorres.com/contacto</a></p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
