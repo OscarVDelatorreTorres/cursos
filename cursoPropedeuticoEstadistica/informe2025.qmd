@@ -1,11 +1,12 @@
 ---
-title: "Curso Introducción a la Estadística para el Curso propedéutico del doctorado en Administración de la FCCA de la UMSNH (Generación 2025)"
-author: Dr. Oscar V. De la Torre-Torres
 format:
     html:
-      toc: TRUE
+      toc: FALSE
     pdf:
-      toc: TRUE
+      toc: FALSE
+    docx:
+      toc: FALSE      
+prefer-html: TRUE
 citecolor: blue
 linkcolor: blue
 urlcolor: blue
@@ -21,21 +22,47 @@ library(kableExtra)
 library(openxlsx)
 ```
 
-```{r, echo=FALSE, out.width="15%", fig.align="center"}
-knitr::include_graphics("LogoFCCA.png")
-```
+# Informe del curso Introducción a la Estadística para el Curso propedéutico del doctorado en Administración de la FCCA de la UMSNH (Generación 2025)
 
-# Informe de actividades
+
 
 Morelia, Michoacán, México a 05 de agosto del 2025.
 
+
 **Dr. Jaime Apolinar Martínez Arroyo**
+
+
 Director del Programa de Doctorado en Administración de la FCCA de la UMSNH
+
 Universidad Michoacana de San Nicolás de Hidalgo, Ciudad
 
-
+::: {.justify}
 Por medio de la presente, le remito un cordial saludo y le informo la conclusión exitosa del curso propedéutico de Introducción a la Estadística para el Programa de Doctorado en Administración de la Facultad de Contaduría y Ciencias Administrativas (FCCA) de la Universidad Michoacana de San Nicolás de Hidalgo (UMSNH), correspondiente a la generación 2025.
 
-El programa anexo a la impresión del presente informe se puede consultar en la siguiente liga: 
+El programa, anexo a la impresión del presente informe, se puede consultar en la siguiente liga: 
 
-# Relación de estudiantes aprobados
+[https://oscarvdelatorretorres.github.io/cursos/cursoPropedeuticoEstadistica/](https://oscarvdelatorretorres.github.io/cursos/cursoPropedeuticoEstadistica/)
+
+El curso se llevó a cabo del 6 de marzo al 14 de agosto del 2025, con un total de 80 horas, distribuidas en 34 horas teóricas y 46 horas prácticas. Las sesiones se impartieron de manera semanal y en línea a través de mi [plataforma Moodle](https://moodle1.cursosdelatorreybollain.com/course/view.php?id=4).
+
+Como resultado de las actividades de capacitación en el marco del programa de estudios del trabajo, me permito presentar la relación de estudiantes aprobados. Personas que cumplieron con los criterios de asistencia y aprovechamiento en la materia.
+
+```{r echo=FALSE}
+# Se importa el archivo de excel:
+aprobados=read.xlsx("relacionEstudiantesAprobados2025.xlsx")
+# Se imprime la tabla con datatable, cambiando los nombres de columnas por unos con mejor formato visual:
+kable(aprobados, col.names = gsub("[.]", " ", names(aprobados)), booktabs = TRUE) %>%
+  kable_styling(font_size = 10)
+# word code:
+# kable(aprobados)
+```
+
+Sin otro particular, le agradezco la atención y le reitero la sinceridad de mis consideraciones.
+
+:::
+
+**Dr. Oscar Valdemar De la Torre Torres**
+
+Facultad de Contaduría y Ciencias Administrativas
+
+Universidad Michoacana de San Nicolás de Hidalgo
