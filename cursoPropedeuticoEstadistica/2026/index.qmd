@@ -1,0 +1,136 @@
+---
+title: "Curso Introducción a la Estadística para el Curso propedéutico del doctorado en Administración de la FCCA de la UMSNH (Generación 2026)"
+author: Dr. Oscar V. De la Torre-Torres
+format:
+    html:
+      toc: TRUE
+    pdf:
+      toc: TRUE
+prefer-html: true
+citecolor: blue
+linkcolor: blue
+urlcolor: blue
+font: times new roman 
+lang: "Es-Es"
+---
+
+```{r setup, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
+library(stargazer)
+library(plotly)
+library(DT)
+library(kableExtra)
+library(openxlsx)
+```
+
+```{r, echo=FALSE, out.width="15%", fig.align="center"}
+knitr::include_graphics("LogoFCCA.png")
+```
+
+# Fechas propuestas y duración del curso
+
+- **Fechas:** Del 3 de abril al 17 de julio del 2026, los viernes de 10:00 a 12:00 horas (en línea vía [plataforma Moodle Dr. Oscar De la Torre](https://moodle1.cursosdelatorreybollain.com/course/view.php?id=12)).
+- **Duración:** 100 horas, impartidas en 16 sesiones de 2 horas (un total de 56 horas teóricas) y en 44 horas prácticas con ejercicios y actividades en línea.
+
+# Presentación
+
+El presente curso tiene de objetivo el introducir y homologar el conocimiento en materia de métodos de análisis estadístico a las y los estudiantes aceptados en el curso propedéutico del doctorado en Administración de la Facultad de Contaduría y Ciencias Administrativas (FCCA) de la Universidad Michoacana de San Nicolás de Hidalgo (UMSNH).
+
+La acreditación del mismo forma parte de los requisitos de admisión al citado programa de doctorado, tal como se establece en el reglamento del mismo y en las convocatorias publicadas en el [sitio web oficial del posgrado](https://www.fcca.umich.mx/doctorado/).
+
+Las sesiones se impartirán en línea a través de la plataforma [Moodle del profesor](https://moodle1.cursosdelatorreybollain.com/course/view.php?id=4). El presente programa expone la estructura temática, herramientas de trabajo, horarios y consideraciones generales del curso.
+
+# Temario
+
+Dado lo anterior, el temario a cubrir será el siguiente:
+
+```{r temarioT, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE}
+
+temario=read.xlsx("temario2026.xlsx")
+temario$Fecha.inicial=format(as.Date(temario$Fecha.inicial, origin="1899-12-30"), "%Y-%m-%d")
+temario$Fecha.Final=format(as.Date(temario$Fecha.Final, origin="1899-12-30") ,"%Y-%m-%d")
+
+total_row=data.frame(
+  Tema="Total",
+  Fecha.inicial="",
+  Fecha.Final="",
+  Sesiones=sum(temario$Sesiones),
+  Horas.teóricas=sum(temario$Horas.teóricas),
+  Horas.prácticas=sum(temario$Horas.prácticas)
+)
+
+temario_total=rbind(temario, total_row)
+
+kable(temario_total, col.names = c("Tema", "Fecha inicial", "Fecha Final", "Sesiones", "Horas teóricas", "Horas prácticas"), align = c("l", "c", "c", "c", "c", "c"), booktabs = TRUE) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = FALSE, position = "center") %>%
+  row_spec(nrow(temario_total), bold = TRUE)
+```
+
+**El curso tiene un total de 100 horas (56 teóricas y 44 prácticas).**
+
+# Descripción temática
+
+De la tabla del temario se pueden apreciar los 10 temas que se detallan a continuación:
+
+## Introducción a la Estadística
+
+En este tópico se hace una introducción a la Estadística, así como a sus dos principales ramas con las que se estructura el temario:
+
+1. Estadística descriptiva: En este apartado se revisan los conceptos básicos de la estadística, así como las medidas de tendencia central y de dispersión. Se aprenderá a elaborar tablas y gráficas para resumir datos.
+2. Estadística inferencial: En este apartado se revisan los conceptos básicos de la inferencia estadística, así como las pruebas de hipótesis y los intervalos de confianza. Se aprenderá a realizar inferencias sobre poblaciones a partir de muestras. Inferencias tales como comprobaciones de hipótesis, intervalos de confianza y regresiones lineales simples.
+
+## Estadística descriptiva
+
+### Medidas descriptivas
+
+En este apartado se revisan los conceptos básicos de la estadística descriptiva, así como las medidas de tendencia central y de dispersión. De manera complementaria se aprenderán las medidas de concordancia y forma de la distribución de los datos. Se aprenderá a elaborar tablas y gráficas para resumir datos, a través de R y Python, así como la extracción de datos de fuentes externas a través de APIs o directamente de archivos *.txt, excel o csv.
+
+### Cálculo de probabilidades
+En este apartado se revisan los conceptos básicos de la probabilidad, así como las distribuciones de probabilidad más comunes. Se aprenderá a calcular probabilidades de funciones de probabilidad discretas como son la Poisson, la binomial o la hipergeométrica. De manera adicional, se estudiarán funciones de probabilidad continuas como la normal, la exponencial o la t de Student. Los cálculos de probabilidad se harán con el apoyo de R y Python.
+
+## Estadística inferencial
+
+En este sub tema general se revisa lo relativo a las inferencias de la Estadística, a efecto de hacer descripciones generalizables del comportamiento de una variable aleatoria a partir de una muestra
+
+### Teoría del muestreo
+
+En este apartado se revisan los conceptos básicos de la teoría del muestreo, así como los diferentes tipos de muestreo. Se aprenderá a seleccionar muestras representativas y a calcular errores muestrales. Se aprenderá a realizar inferencias sobre poblaciones a partir de muestras, así como el cálculo de intervalos de confianza.
+
+### Prueba de hipótesis con técnica clásica
+
+En este apartado se revisan los conceptos básicos de la prueba de hipótesis, así como las diferentes técnicas de prueba. Se aprenderá a formular hipótesis nulas y alternativas, así como a calcular valores críticos y p-valores. Se aprenderá a realizar pruebas de hipótesis para medias y proporciones.
+
+### Prueba de hipótesis con técnica clásica
+
+En este apartado se extiende la revisión de pruebas de hipótesis para varianzas o pares de varianzas con los mismos grados de libertad. En este tema se hará una primera introducción a las pruebas de bondad de ajusted como es la prueba Jarque-Bera para determinar si la función de probabilidad gaussiana describe el comportamiento aleatorio de los datos estudiados.
+
+### Prueba de hipótesis con técnica ANOVA
+
+En este apartado se revisan los conceptos básicos de la técnica ANOVA, así como las diferentes técnicas de prueba. Se aprenderá a formular hipótesis nulas y alternativas, así como a calcular valores críticos y p-valores. Se aprenderá a realizar pruebas de hipótesis para el caso en el que las varianzas comparadas no tienen los mismos grados de libertad, así como a realizar pruebas de hipótesis para comparar más de dos medias poblacionales.
+
+## Estadística no paramétrica: generalidades y pruebas de hipótesis
+
+En este apartado se revisan los conceptos básicos de la estadística no paramétrica, así como las diferentes técnicas de prueba. Se aprenderá a formular hipótesis nulas y alternativas, así como a calcular valores críticos y p-valores. 
+Se aprenderá a realizar pruebas de hipótesis no paraméricas de bondad de ajuste como son la Kolmogorov-Smirnov y la Anderson-Darling.
+
+# Material de trabajo necesario, horario y consideraciones generales
+
+Las herramientas necesarias para cursar y acreditar el curso son:
+
+- Computadora (PC o Mac).
+- Instalación y/o uso de **Python**, **Antigravity** y **Google Colab** para la ejecución y desarrollo de prácticas y scripts de análisis estadístico.
+
+Para acreditar el curso deberá presentarse lista en el formato especificado en la plataforma de clase y cubrirse el número de horas teóricas y prácticas, junto con las tareas y cuestionarios aplicables. 
+
+**La calificación mínima aprobatoria es de 8**.
+
+## Forma de inscribirse:
+
+Favor de registrarse en la siguiente [liga de la materia](https://moodle1.cursosdelatorreybollain.com/course/view.php?id=12). Deberá crear una cuenta de usuario preferentemente con su correo institucional y proporcionar la clave privada de inscripción al grupo que proporcionó la coordinación del Doctorado en Adminsitración de la FCCA de la UMSNH.
+
+# Contacto
+
+Cualquier necesidad o problema técnico, favor de comunicarse en la página de contacto de mi sitio web: [https://www.oscardelatorretorres.com/contacto](https://moodle1.cursosdelatorreybollain.com/course/view.php?id=4)
+
+# Informe de actividades y relación de estudiantes con calificación aprobatoria
+
+El informe de actividades respecto a la cohorte 2026 del curso propedéutico de doctorado en Administración, así como la relación de estudiantes que aprobaron el curso, se encuentra disponible en la siguiente liga: [Informe de actividades y calificaciones](informe2026.html).

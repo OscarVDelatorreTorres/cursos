@@ -1,0 +1,72 @@
+---
+format:
+    html:
+      toc: FALSE
+    pdf:
+      toc: FALSE
+    docx:
+      toc: FALSE      
+prefer-html: TRUE
+citecolor: blue
+linkcolor: blue
+urlcolor: blue
+font: times new roman 
+lang: "Es-Es"
+---
+
+```{r setup, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
+library(stargazer)
+library(plotly)
+library(DT)
+library(kableExtra)
+library(openxlsx)
+```
+
+# Informe del curso Introducción a la Estadística para el Curso propedéutico del doctorado en Administración de la FCCA de la UMSNH (Generación 2026)
+
+
+
+Morelia, Michoacán, México a 17 de julio del 2026.
+
+
+**Dra. Flor Madrigal Moreno**
+
+
+Coordinadora del Programa de Doctorado en Administración de la FCCA de la UMSNH
+
+Universidad Michoacana de San Nicolás de Hidalgo, Ciudad
+
+::: {.justify}
+Por medio de la presente, le remito un cordial saludo y le informo la conclusión exitosa del curso propedéutico de Introducción a la Estadística para el Programa de Doctorado en Administración de la Facultad de Contaduría y Ciencias Administrativas (FCCA) de la Universidad Michoacana de San Nicolás de Hidalgo (UMSNH), correspondiente a la generación 2026.
+
+El programa, anexo a la impresión del presente informe, se puede consultar en la siguiente liga: 
+
+[https://oscarvdelatorretorres.github.io/cursos/cursoPropedeuticoEstadistica/2026/](https://oscarvdelatorretorres.github.io/cursos/cursoPropedeuticoEstadistica/2026/)
+
+El curso se llevó a cabo del 3 de abril al 17 de julio del 2026, con un total de 100 horas, distribuidas en 56 horas teóricas y 44 horas prácticas. Las sesiones se impartieron de manera semanal y en línea a través de mi [plataforma Moodle](https://moodle1.cursosdelatorreybollain.com/course/view.php?id=4).
+
+Como resultado de las actividades de capacitación en el marco del programa de estudios del trabajo, me permito presentar la relación de estudiantes aprobados. Personas que cumplieron con los criterios de asistencia y aprovechamiento en la materia.
+
+```{r echo=FALSE}
+# Se importa el archivo de excel:
+aprobados=read.xlsx("relacionEstudiantesAprobados.xlsx")
+# Se filtran los estudiantes con calificación aprobatoria (>= 6):
+aprobados=aprobados[aprobados$Calificación.final >= 6, ]
+# Formato a 2 decimales para la calificación final:
+aprobados$Calificación.final=sprintf("%.2f", aprobados$Calificación.final)
+
+kable(aprobados, col.names = c("Nombre", "Apellido", "Porcentaje de asistencia", "Calificación final"), align = c("l", "l", "c", "c"), booktabs = TRUE) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), font_size = 10, full_width = FALSE, position = "center")
+```
+
+Sin otro particular, le agradezco la atención y le reitero la sinceridad de mis consideraciones.
+
+:::
+
+**Dr. Oscar Valdemar De la Torre Torres** 
+
+Facultad de Contaduría y Ciencias Administrativas
+
+Universidad Michoacana de San Nicolás de Hidalgo
+
+[Version firmada del informe aquí](informeFirmado.pdf)
