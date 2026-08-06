@@ -6,7 +6,8 @@ format:
       toc: FALSE
     docx:
       toc: FALSE      
-prefer-html: TRUE
+always_allow_html: true
+prefer-html: true
 citecolor: blue
 linkcolor: blue
 urlcolor: blue
@@ -26,7 +27,7 @@ library(openxlsx)
 
 
 
-Morelia, Michoacán, México a 17 de julio del 2026.
+Morelia, Michoacán, México a 06 de agosto del 2026.
 
 
 **Dra. Flor Madrigal Moreno**
@@ -49,14 +50,21 @@ Como resultado de las actividades de capacitación en el marco del programa de e
 
 ```{r echo=FALSE}
 # Se importa el archivo de excel:
-aprobados=read.xlsx("relacionEstudiantesAprobados.xlsx")
+aprobados <- read.xlsx("relacionEstudiantesAprobados.xlsx")
 # Se filtran los estudiantes con calificación aprobatoria (>= 6):
-aprobados=aprobados[aprobados$Calificación.final >= 6, ]
+aprobados <- aprobados[aprobados$Calificación.final >= 6, ]
 # Formato a 2 decimales para la calificación final:
-aprobados$Calificación.final=sprintf("%.2f", aprobados$Calificación.final)
+aprobados$Calificación.final <- sprintf("%.2f", aprobados$Calificación.final)
 
-kable(aprobados, col.names = c("Nombre", "Apellido", "Porcentaje de asistencia", "Calificación final"), align = c("l", "l", "c", "c"), booktabs = TRUE) %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), font_size = 10, full_width = FALSE, position = "center")
+if (knitr::is_html_output()) {
+    kable(aprobados, col.names = c("Nombre", "Apellido", "Porcentaje de asistencia", "Calificación final"), align = c("l", "l", "c", "c"), booktabs = TRUE) %>%
+        kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), font_size = 10, full_width = FALSE, position = "center")
+} else if (knitr::is_latex_output()) {
+    kable(aprobados, col.names = c("Nombre", "Apellido", "Porcentaje de asistencia", "Calificación final"), align = c("l", "l", "c", "c"), booktabs = TRUE) %>%
+        kable_styling(latex_options = c("striped", "hold_position"), font_size = 10, full_width = FALSE, position = "center")
+} else {
+    kable(aprobados, col.names = c("Nombre", "Apellido", "Porcentaje de asistencia", "Calificación final"), align = c("l", "l", "c", "c"), booktabs = TRUE)
+}
 ```
 
 Sin otro particular, le agradezco la atención y le reitero la sinceridad de mis consideraciones.
